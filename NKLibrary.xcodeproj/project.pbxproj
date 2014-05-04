@@ -21,6 +21,8 @@
 		7CAFDB7C191652F100BCDC9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFDB5E191652F100BCDC9F /* UIKit.framework */; };
 		7CAFDB84191652F100BCDC9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7CAFDB82191652F100BCDC9F /* InfoPlist.strings */; };
 		7CAFDB86191652F100BCDC9F /* NKLibraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAFDB85191652F100BCDC9F /* NKLibraryTests.m */; };
+		7CB6D51B1916B65B00B5E831 /* UIApplication+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB6D51A1916B65B00B5E831 /* UIApplication+Util.m */; };
+		7CB6D5211916C1B400B5E831 /* NKURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB6D5201916C1B400B5E831 /* NKURLConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,13 @@
 		7CAFDB81191652F100BCDC9F /* NKLibraryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NKLibraryTests-Info.plist"; sourceTree = "<group>"; };
 		7CAFDB83191652F100BCDC9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7CAFDB85191652F100BCDC9F /* NKLibraryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKLibraryTests.m; sourceTree = "<group>"; };
+		7CB6D4D119168FA700B5E831 /* NKMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKMacro.h; sourceTree = "<group>"; };
+		7CB6D5141916B59000B5E831 /* NKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKCategory.h; sourceTree = "<group>"; };
+		7CB6D5191916B65B00B5E831 /* UIApplication+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+Util.h"; sourceTree = "<group>"; };
+		7CB6D51A1916B65B00B5E831 /* UIApplication+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+Util.m"; sourceTree = "<group>"; };
+		7CB6D51D1916B82100B5E831 /* NKARCMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKARCMacro.h; sourceTree = "<group>"; };
+		7CB6D51F1916C1B400B5E831 /* NKURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKURLConnection.h; sourceTree = "<group>"; };
+		7CB6D5201916C1B400B5E831 /* NKURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKURLConnection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +121,7 @@
 		7CAFDB60191652F100BCDC9F /* NKLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				7CB6D4C619168DD300B5E831 /* Source */,
 				7CAFDB69191652F100BCDC9F /* AppDelegate.h */,
 				7CAFDB6A191652F100BCDC9F /* AppDelegate.m */,
 				7CAFDB6C191652F100BCDC9F /* Main.storyboard */,
@@ -150,6 +160,68 @@
 				7CAFDB82191652F100BCDC9F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7CB6D4C619168DD300B5E831 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				7CB6D5131916B55E00B5E831 /* Category */,
+				7CB6D4CF19168EF400B5E831 /* Macro */,
+				7CB6D4C819168DD300B5E831 /* Modules */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		7CB6D4C819168DD300B5E831 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				7CB6D51E1916C1AC00B5E831 /* NKURLConnection */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		7CB6D4CF19168EF400B5E831 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				7CB6D51C1916B80E00B5E831 /* NKARCMacro */,
+				7CB6D4D119168FA700B5E831 /* NKMacro.h */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		7CB6D5131916B55E00B5E831 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				7CB6D5181916B65000B5E831 /* UIApplication */,
+				7CB6D5141916B59000B5E831 /* NKCategory.h */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		7CB6D5181916B65000B5E831 /* UIApplication */ = {
+			isa = PBXGroup;
+			children = (
+				7CB6D5191916B65B00B5E831 /* UIApplication+Util.h */,
+				7CB6D51A1916B65B00B5E831 /* UIApplication+Util.m */,
+			);
+			path = UIApplication;
+			sourceTree = "<group>";
+		};
+		7CB6D51C1916B80E00B5E831 /* NKARCMacro */ = {
+			isa = PBXGroup;
+			children = (
+				7CB6D51D1916B82100B5E831 /* NKARCMacro.h */,
+			);
+			path = NKARCMacro;
+			sourceTree = "<group>";
+		};
+		7CB6D51E1916C1AC00B5E831 /* NKURLConnection */ = {
+			isa = PBXGroup;
+			children = (
+				7CB6D51F1916C1B400B5E831 /* NKURLConnection.h */,
+				7CB6D5201916C1B400B5E831 /* NKURLConnection.m */,
+			);
+			path = NKURLConnection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,7 +323,9 @@
 			files = (
 				7CAFDB71191652F100BCDC9F /* ViewController.m in Sources */,
 				7CAFDB6B191652F100BCDC9F /* AppDelegate.m in Sources */,
+				7CB6D51B1916B65B00B5E831 /* UIApplication+Util.m in Sources */,
 				7CAFDB67191652F100BCDC9F /* main.m in Sources */,
+				7CB6D5211916C1B400B5E831 /* NKURLConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +465,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NKLibrary/NKLibrary-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "NKLibrary/NKLibrary-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
