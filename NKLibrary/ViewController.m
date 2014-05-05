@@ -39,12 +39,13 @@
     //NSString *url = @"http://download.thinkbroadband.com/5MB.zip";
     //NSString *url = @"http://www.ipadenclosures.com/php-oak/themes/global/admin_images/Apple_gray_logo.png";
     NSString *url = @"http://58.181.32.102:7000/net/index2.php";
-    NSDictionary *parameters = @{@"foo": @"한글", @"bar": @"123"};
+    //NSDictionary *parameters = @{@"foo": @"한글", @"bar": @"123"};
+    NSString *parameters = @"foo=abc";
     NKURLConnection *manager = [NKURLConnection manager];
     manager.request.requestURL = url;
     manager.request.parameters = parameters;
-    manager.request.dataType = NKURLDataTypeJSON;
-    //manager.request.HTTPMethod = @"POST";
+    manager.request.dataType = NKDataTypeJSON;
+    manager.request.HTTPMethod = @"POST";
     //manager.connection.async = YES;
     [manager readyRequest:manager.request
                connection:manager.connection

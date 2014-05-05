@@ -10,23 +10,31 @@
 #import "NKCategory.h"
 #import "NKMacro.h"
 
-typedef NS_ENUM(NSUInteger, NKURLDataType) {
-    // HTTPHeaderField("Content-Type") Set "application/x-www-form-urlencoded";
-    // HTTPHeaderField("Accept") Set "*/*";
-    NKURLDataTypeTEXT,
+typedef NS_ENUM(NSUInteger, NKDataType) {
+    // HTTPHeaderField("Content-Type")  Set "application/x-www-form-urlencoded";
+    // HTTPHeaderField("Accept")        Set "";
+    NKDataTypeTEXT,
     
-    // HTTPHeaderField("Content-Type") Set "application/json;";
-    // HTTPHeaderField("Accept") Set "application/json;";
-    NKURLDataTypeJSON,
+    // HTTPHeaderField("Content-Type")  Set "application/json;";
+    // HTTPHeaderField("Accept")        Set "application/json;";
+    NKDataTypeJSON,
     
-    // HTTPHeaderField("Content-Type") Set "application/json;";
-    // HTTPHeaderField("Accept") Set "*/*";
-    NKURLDataTypeReceiveJSON,
+    // HTTPHeaderField("Content-Type")  Set "application/json;";
+    // HTTPHeaderField("Accept")        Set "*/*";
+    NKDataTypeReceiveJSON,
     
-    // HTTPHeaderField("Content-Type") Set "*/*";
-    // HTTPHeaderField("Accept") Set "application/json;";
-    NKURLDataTypeResponseJSON,
+    // HTTPHeaderField("Content-Type")  Set "";
+    // HTTPHeaderField("Accept")        Set "application/json;";
+    NKDataTypeResponseJSON,
 };
+
+typedef NS_ENUM(NSUInteger, NKEncryptType) {
+    NKEncryptTypeAES256,
+    NKEncryptTypeDES,
+    NKEncryptTypeCAST
+};
+
+
 
 @interface NKHTTPURLRequest : NSObject
 
@@ -84,7 +92,7 @@ typedef NS_ENUM(NSUInteger, NKURLDataType) {
  
  Default : NKURLDataTypeTEXT
  */
-@property (nonatomic, assign) NKURLDataType dataType;
+@property (nonatomic, assign) NKDataType dataType;
 
 /**
  
@@ -94,7 +102,7 @@ typedef NS_ENUM(NSUInteger, NKURLDataType) {
 + (instancetype)manager;
 
 - (NSMutableURLRequest *)requestWithMethodType:(NSString *)methodType
-                                  withDataType:(NKURLDataType)dataType
+                                  withDataType:(NKDataType)dataType
                                 withRequestURL:(NSString *)requestURL
                                 withParameters:(id)parameters;
 

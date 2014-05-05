@@ -35,7 +35,7 @@
         _HTTPShouldUsePipelining = NO;
         _networkServiceType = NSURLNetworkServiceTypeDefault;
         _timeoutInterval = 60;
-        _dataType = NKURLDataTypeTEXT;
+        _dataType = NKDataTypeTEXT;
         _HTTPMethodsEncodingParametersInURI = [NSSet setWithObjects:@"GET", @"HEAD", @"DELETE", nil];
     }
     
@@ -45,7 +45,7 @@
 #pragma mark -
 
 - (NSMutableURLRequest *)requestWithMethodType:(NSString *)methodType
-                                  withDataType:(NKURLDataType)dataType
+                                  withDataType:(NKDataType)dataType
                                 withRequestURL:(NSString *)requestURL
                                 withParameters:(id)parameters
 {
@@ -65,7 +65,9 @@
     mutableRequest.networkServiceType = _networkServiceType;
     mutableRequest.timeoutInterval = _timeoutInterval;
     
-    if (_dataType == NKURLDataTypeTEXT || [_HTTPMethodsEncodingParametersInURI containsObject:_HTTPMethod]) {
+    if (_dataType == NKDataTypeTEXT
+        || [_HTTPMethodsEncodingParametersInURI containsObject:_HTTPMethod]
+        || [_parameters isKindOfClass:[NSString class]]) {
         mutableRequest = [[self requestModifiedRequest:mutableRequest withMethodType:_HTTPMethod withParameters:_parameters] mutableCopy];
     }else {
         mutableRequest = [[self requestModifiedRequest:mutableRequest withDataType:_dataType withParameters:_parameters] mutableCopy];
@@ -117,13 +119,13 @@
 }
 
 - (NSURLRequest *)requestModifiedRequest:(NSURLRequest *)request
-                            withDataType:(NKURLDataType)dataType
+                            withDataType:(NKDataType)dataType
                           withParameters:(id)parameters
 {
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
     
     switch (dataType) {
-        case NKURLDataTypeJSON:
+        case NKDataTypeJSON:
             if (parameters) {
                 if (![mutableRequest valueForHTTPHeaderField:@"Content-Type"]) {
                     NSString *charset = NK_BRIDGE_CAST(NSString *, CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(_stringEncoding)));
@@ -131,11 +133,12 @@
                 }
                 [mutableRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil]];
             }
+            
             if (![mutableRequest valueForHTTPHeaderField:@"Accept"]) {
                 [mutableRequest setValue:@"application/json;" forHTTPHeaderField:@"Accept"];
             }
             break;
-        case NKURLDataTypeReceiveJSON:
+        case NKDataTypeReceiveJSON:
             if (parameters) {
                 if (![mutableRequest valueForHTTPHeaderField:@"Content-Type"]) {
                     NSString *charset = NK_BRIDGE_CAST(NSString *, CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(_stringEncoding)));
@@ -143,8 +146,16 @@
                 }
                 [mutableRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil]];
             }
+            
+            if (![mutableRequest valueForHTTPHeaderField:@"Accept"]) {
+                [mutableRequest setValue:@"*/*;" forHTTPHeaderField:@"Accept"];
+            }
             break;
-        case NKURLDataTypeResponseJSON:
+        case NKDataTypeResponseJSON:
+            if (parameters) {
+                
+            }
+            
             if (![mutableRequest valueForHTTPHeaderField:@"Accept"]) {
                 [mutableRequest setValue:@"application/json;" forHTTPHeaderField:@"Accept"];
             }
