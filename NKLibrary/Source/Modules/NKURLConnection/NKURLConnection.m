@@ -92,6 +92,23 @@
     }
 }
 
+- (NSURLRequest *)requestBySerializingRequest:(NSURLRequest *)request
+                               withParameters:(id)parameters
+{
+    
+    NSMutableURLRequest *mutableRequest = [request mutableCopy];
+    
+    if (parameters) {
+        if (![mutableRequest valueForHTTPHeaderField:@"Content-Type"]) {
+            [mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        }
+        
+        [mutableRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil]];
+    }
+    
+    return mutableRequest;
+}
+
 #pragma mark -
 
 - (void)nonASyncConnection {

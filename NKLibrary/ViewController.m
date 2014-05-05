@@ -22,14 +22,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    NSAssert(self.view, @"View must not be nil.");
-    
+//    NSAssert(self.view, @"View must not be nil.");
 //    int a = 0;
 //    NSAssert(a == 0, @"a is not 0" );
     
-    LLog(@"%@", @"LLog is work!");
-    
-    [self performSelector:@selector(test) withObject:nil afterDelay:2.0f];
+//    [self performSelector:@selector(test) withObject:nil afterDelay:2.0f];
     
 }
 

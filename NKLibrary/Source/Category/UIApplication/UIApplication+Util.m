@@ -7,20 +7,25 @@
 //
 
 #import "UIApplication+Util.h"
+#include <sys/xattr.h>
 
 @implementation UIApplication (Util)
+
+#pragma mark - 
 
 + (id)appDelegate {
     return [[UIApplication sharedApplication] delegate];
 }
 
+#pragma mark -
 
 + (void)showNetworkActivityIndicator {
-  [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
 + (void)hideNetworkActivityIndicator {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
+
 
 @end

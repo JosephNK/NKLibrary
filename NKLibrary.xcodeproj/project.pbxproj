@@ -23,6 +23,11 @@
 		7CAFDB86191652F100BCDC9F /* NKLibraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAFDB85191652F100BCDC9F /* NKLibraryTests.m */; };
 		7CB6D51B1916B65B00B5E831 /* UIApplication+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB6D51A1916B65B00B5E831 /* UIApplication+Util.m */; };
 		7CB6D5211916C1B400B5E831 /* NKURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB6D5201916C1B400B5E831 /* NKURLConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7CB788C91916F84B00F5074A /* NKUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB788C81916F84B00F5074A /* NKUtil.m */; };
+		7CB788CB1916F8DB00F5074A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB788CA1916F8DB00F5074A /* SystemConfiguration.framework */; };
+		7CB788CF1916F9D000F5074A /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB788CE1916F9D000F5074A /* NSString+Util.m */; };
+		7CB788D11916F9FE00F5074A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB788D01916F9FE00F5074A /* CoreLocation.framework */; };
+		7CB788D91916FEC700F5074A /* NKSingletonData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB788D81916FEC700F5074A /* NKSingletonData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +67,14 @@
 		7CB6D51D1916B82100B5E831 /* NKARCMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKARCMacro.h; sourceTree = "<group>"; };
 		7CB6D51F1916C1B400B5E831 /* NKURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKURLConnection.h; sourceTree = "<group>"; };
 		7CB6D5201916C1B400B5E831 /* NKURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKURLConnection.m; sourceTree = "<group>"; };
+		7CB788C71916F84B00F5074A /* NKUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKUtil.h; sourceTree = "<group>"; };
+		7CB788C81916F84B00F5074A /* NKUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKUtil.m; sourceTree = "<group>"; };
+		7CB788CA1916F8DB00F5074A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7CB788CD1916F9D000F5074A /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
+		7CB788CE1916F9D000F5074A /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
+		7CB788D01916F9FE00F5074A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7CB788D71916FEC700F5074A /* NKSingletonData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKSingletonData.h; sourceTree = "<group>"; };
+		7CB788D81916FEC700F5074A /* NKSingletonData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKSingletonData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CB788D11916F9FE00F5074A /* CoreLocation.framework in Frameworks */,
+				7CB788CB1916F8DB00F5074A /* SystemConfiguration.framework in Frameworks */,
 				7CAFDB5D191652F100BCDC9F /* CoreGraphics.framework in Frameworks */,
 				7CAFDB5F191652F100BCDC9F /* UIKit.framework in Frameworks */,
 				7CAFDB5B191652F100BCDC9F /* Foundation.framework in Frameworks */,
@@ -110,6 +125,8 @@
 		7CAFDB59191652F100BCDC9F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7CB788D01916F9FE00F5074A /* CoreLocation.framework */,
+				7CB788CA1916F8DB00F5074A /* SystemConfiguration.framework */,
 				7CAFDB5A191652F100BCDC9F /* Foundation.framework */,
 				7CAFDB5C191652F100BCDC9F /* CoreGraphics.framework */,
 				7CAFDB5E191652F100BCDC9F /* UIKit.framework */,
@@ -122,11 +139,11 @@
 			isa = PBXGroup;
 			children = (
 				7CB6D4C619168DD300B5E831 /* Source */,
+				7CAFDB6F191652F100BCDC9F /* ViewController.h */,
+				7CAFDB70191652F100BCDC9F /* ViewController.m */,
 				7CAFDB69191652F100BCDC9F /* AppDelegate.h */,
 				7CAFDB6A191652F100BCDC9F /* AppDelegate.m */,
 				7CAFDB6C191652F100BCDC9F /* Main.storyboard */,
-				7CAFDB6F191652F100BCDC9F /* ViewController.h */,
-				7CAFDB70191652F100BCDC9F /* ViewController.m */,
 				7CAFDB72191652F100BCDC9F /* Images.xcassets */,
 				7CAFDB61191652F100BCDC9F /* Supporting Files */,
 			);
@@ -165,6 +182,7 @@
 		7CB6D4C619168DD300B5E831 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				7CB788C61916F83900F5074A /* Util */,
 				7CB6D5131916B55E00B5E831 /* Category */,
 				7CB6D4CF19168EF400B5E831 /* Macro */,
 				7CB6D4C819168DD300B5E831 /* Modules */,
@@ -175,6 +193,7 @@
 		7CB6D4C819168DD300B5E831 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				7CB788D61916FEBC00F5074A /* NKSingletonData */,
 				7CB6D51E1916C1AC00B5E831 /* NKURLConnection */,
 			);
 			path = Modules;
@@ -192,6 +211,7 @@
 		7CB6D5131916B55E00B5E831 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				7CB788CC1916F9BD00F5074A /* NSString */,
 				7CB6D5181916B65000B5E831 /* UIApplication */,
 				7CB6D5141916B59000B5E831 /* NKCategory.h */,
 			);
@@ -222,6 +242,33 @@
 				7CB6D5201916C1B400B5E831 /* NKURLConnection.m */,
 			);
 			path = NKURLConnection;
+			sourceTree = "<group>";
+		};
+		7CB788C61916F83900F5074A /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				7CB788C71916F84B00F5074A /* NKUtil.h */,
+				7CB788C81916F84B00F5074A /* NKUtil.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		7CB788CC1916F9BD00F5074A /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				7CB788CD1916F9D000F5074A /* NSString+Util.h */,
+				7CB788CE1916F9D000F5074A /* NSString+Util.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
+		7CB788D61916FEBC00F5074A /* NKSingletonData */ = {
+			isa = PBXGroup;
+			children = (
+				7CB788D71916FEC700F5074A /* NKSingletonData.h */,
+				7CB788D81916FEC700F5074A /* NKSingletonData.m */,
+			);
+			path = NKSingletonData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +370,9 @@
 			files = (
 				7CAFDB71191652F100BCDC9F /* ViewController.m in Sources */,
 				7CAFDB6B191652F100BCDC9F /* AppDelegate.m in Sources */,
+				7CB788D91916FEC700F5074A /* NKSingletonData.m in Sources */,
+				7CB788C91916F84B00F5074A /* NKUtil.m in Sources */,
+				7CB788CF1916F9D000F5074A /* NSString+Util.m in Sources */,
 				7CB6D51B1916B65B00B5E831 /* UIApplication+Util.m in Sources */,
 				7CAFDB67191652F100BCDC9F /* main.m in Sources */,
 				7CB6D5211916C1B400B5E831 /* NKURLConnection.m in Sources */,
