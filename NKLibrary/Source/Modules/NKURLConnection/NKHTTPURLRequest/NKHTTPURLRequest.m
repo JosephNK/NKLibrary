@@ -27,16 +27,7 @@
 
 - (instancetype)init {
     if ((self = [super init])) {
-        _HTTPMethod = @"GET";
-        _stringEncoding = NSUTF8StringEncoding;
-        _allowsCellularAccess = YES;
-        _cachePolicy = NSURLRequestUseProtocolCachePolicy;
-        _HTTPShouldHandleCookies = YES;
-        _HTTPShouldUsePipelining = NO;
-        _networkServiceType = NSURLNetworkServiceTypeDefault;
-        _timeoutInterval = 60;
-        _dataType = NKDataTypeTEXT;
-        _HTTPMethodsEncodingParametersInURI = [NSSet setWithObjects:@"GET", @"HEAD", @"DELETE", nil];
+        [self defaultVariable];
     }
     
     return self;
@@ -44,16 +35,34 @@
 
 #pragma mark -
 
-- (NSMutableURLRequest *)requestWithMethodType:(NSString *)methodType
-                                  withDataType:(NKDataType)dataType
-                                withRequestURL:(NSString *)requestURL
-                                withParameters:(id)parameters
+- (void)defaultVariable {
+    _HTTPMethod = @"GET";
+    _stringEncoding = NSUTF8StringEncoding;
+    _allowsCellularAccess = YES;
+    _cachePolicy = NSURLRequestUseProtocolCachePolicy;
+    _HTTPShouldHandleCookies = YES;
+    _HTTPShouldUsePipelining = NO;
+    _networkServiceType = NSURLNetworkServiceTypeDefault;
+    _timeoutInterval = 60;
+    _dataType = NKDataTypeTEXT;
+    _HTTPMethodsEncodingParametersInURI = [NSSet setWithObjects:@"GET", @"HEAD", @"DELETE", nil];
+}
+
+#pragma mark -
+
+- (void)setVariableMethodType:(NSString *)methodType
+                     DataType:(NKDataType)dataType
+                   RequestURL:(NSString *)requestURL
+                   Parameters:(id)parameters
 {
     _HTTPMethod = [methodType uppercaseString];
     _dataType = dataType;
     _requestURL = requestURL;
     _parameters = parameters;
-    
+}
+
+- (NSMutableURLRequest *)requestSerialization
+{
     NSURL *url = [NSURL URLWithString:_requestURL];
     
     NSMutableURLRequest *mutableRequest = [[NSMutableURLRequest alloc] initWithURL:url];
@@ -75,6 +84,9 @@
     
 	return mutableRequest;
 }
+
+#pragma mark -
+
 
 #pragma mark -
 

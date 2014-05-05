@@ -48,20 +48,12 @@
         successBlock:(void (^)(NSData *data))successBlock
           errorBlock:(void (^)(NSError *error))errorBlock {
     
-    NSURLRequest *req = [self createRequestInfo:request];
-    connection.request = req;
+    NSMutableURLRequest *mutableRequest = [request requestSerialization];
+    connection.request = mutableRequest;
     
     [connection responseBlock:responseBlock receiveBlock:receiveBlock successBlock:successBlock errorBlock:errorBlock];
 }
 
 #pragma mark -
-
-- (NSURLRequest *)createRequestInfo:(NKHTTPURLRequest *)request {
-    NSMutableURLRequest *mutableRequest = [request requestWithMethodType:request.HTTPMethod
-                                                            withDataType:request.dataType
-                                                          withRequestURL:request.requestURL
-                                                          withParameters:request.parameters];
-    return mutableRequest;
-}
 
 @end

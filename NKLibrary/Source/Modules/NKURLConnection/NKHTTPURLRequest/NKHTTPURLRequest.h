@@ -29,6 +29,7 @@ typedef NS_ENUM(NSUInteger, NKDataType) {
 };
 
 typedef NS_ENUM(NSUInteger, NKEncryptType) {
+    NKEncryptTypeNon,
     NKEncryptTypeAES256,
     NKEncryptTypeDES,
     NKEncryptTypeCAST
@@ -88,11 +89,18 @@ typedef NS_ENUM(NSUInteger, NKEncryptType) {
 @property (nonatomic, strong) NSSet *HTTPMethodsEncodingParametersInURI;
 
 /**
- NKURLDataType Definitions; @see NKURLDataType
+ NKURLDataType Definitions; @see enum NKURLDataType
  
  Default : NKURLDataTypeTEXT
  */
 @property (nonatomic, assign) NKDataType dataType;
+
+/**
+ NKEncryptType Definitions; @see enum NKEncryptType
+ 
+ Default : NKEncryptTypeNon
+ */
+@property (nonatomic, assign) NKEncryptType encryptType;
 
 /**
  
@@ -101,9 +109,16 @@ typedef NS_ENUM(NSUInteger, NKEncryptType) {
 
 + (instancetype)manager;
 
-- (NSMutableURLRequest *)requestWithMethodType:(NSString *)methodType
-                                  withDataType:(NKDataType)dataType
-                                withRequestURL:(NSString *)requestURL
-                                withParameters:(id)parameters;
+- (void)setVariableMethodType:(NSString *)methodType
+                     DataType:(NKDataType)dataType
+                   RequestURL:(NSString *)requestURL
+                   Parameters:(id)parameters;
+
+- (NSMutableURLRequest *)requestSerialization;
+
+//- (NSMutableURLRequest *)requestWithMethodType:(NSString *)methodType
+//                                  withDataType:(NKDataType)dataType
+//                                withRequestURL:(NSString *)requestURL
+//                                withParameters:(id)parameters;
 
 @end

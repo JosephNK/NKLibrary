@@ -17,11 +17,6 @@
 @property (nonatomic, copy) SuccessBlock successBlock;
 @property (nonatomic, copy) ErrorBlock errorBlock;
 
-@property (nonatomic, strong) NSNumber *totalSize;
-@property (nonatomic, strong) NSNumber *currentSize;
-@property (nonatomic, strong) NSString *contentType;
-@property (nonatomic, strong) NSURLResponse *response;
-
 @end
 
 @implementation NKHTTPURLConnection
@@ -55,10 +50,17 @@
 
 - (instancetype)init {
     if ((self = [super init])) {
-        _async = YES;
+        [self defaultVariable];
     }
     
     return self;
+}
+
+#pragma mark -
+
+- (void)defaultVariable {
+    _async = YES;
+    _showNetworkIndicator = YES;
 }
 
 #pragma mark -
@@ -75,20 +77,20 @@
     
     NSAssert(_request, @"<NSAssert> request is nil");
     
-    [self switchAsyncSync:_async request:_request];
+    [self doSwitchAsyncSync:_async];
 }
 
 #pragma mark -
 
-- (void)switchAsyncSync:(BOOL)async request:(NSURLRequest *)request {
-    [UIApplication showNetworkActivityIndicator];
+- (void)doSwitchAsyncSync:(BOOL)async {
+    if (_showNetworkIndicator) {
+        [UIApplication showNetworkActivityIndicator];
+    }
     
     if (async) {
-        [self performSelector:@selector(connectionAsynchronous:) withObject:request afterDelay:0.0f];
-        //[self connectionAsynchronous:request];
+        [self connectionAsynchronous:_request];
     }else {
-        [self performSelector:@selector(connectionSynchronous:) withObject:request afterDelay:0.5f];
-        //[self connectionSynchronous:request];
+        [self performSelector:@selector(connectionSynchronous:) withObject:_request afterDelay:0.5f];
     }
 }
 
@@ -107,8 +109,15 @@
                                          returningResponse:&response
                                                      error:&error];
     
-    [UIApplication hideNetworkActivityIndicator];
+    if (_showNetworkIndicator) {
+        [UIApplication hideNetworkActivityIndicator];
+    }
     if (error == nil) {
+        _allHeaderFields = [[(NSHTTPURLResponse*)response allHeaderFields] description];
+        _totalSize = [response expectedContentLength];  // bytes
+        _statusCode = [(NSHTTPURLResponse*)response statusCode];
+        _currentSize = [data length];  // bytes
+        
         _responseBlock(response);
         _receiveBlock(data);
         _successBlock(data);
@@ -126,10 +135,9 @@
 {
     [_data setLength:0];
     
-    //LLog(@"Header \n %@", [[(NSHTTPURLResponse*)response allHeaderFields] description]);
-    //_contentType = [[(NSHTTPURLResponse*)response allHeaderFields] objectForKey:@"Content-Type"];
-    //_totalSize = [[NSNumber alloc] initWithUnsignedLongLong:[response expectedContentLength]];
-	//LLog(@"Total-length: %@ bytes", totalSize_);
+    _allHeaderFields = [[(NSHTTPURLResponse*)response allHeaderFields] description];
+    _totalSize = [response expectedContentLength];  // bytes
+    _statusCode = [(NSHTTPURLResponse*)response statusCode];
     
     _responseBlock(response);
 }
@@ -138,15 +146,16 @@
 {
     [_data appendData:data];
     
-    //_currentSize = [NSNumber numberWithUnsignedInteger:[_data length]];
-	//LLog(@"Current-length: %@ bytes", currentSize);
+    _currentSize = [_data length];  // bytes
     
     _receiveBlock(_data);
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    [UIApplication hideNetworkActivityIndicator];
+    if (_showNetworkIndicator) {
+        [UIApplication hideNetworkActivityIndicator];
+    }
     
     _successBlock(_data);
     
@@ -155,7 +164,9 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    [UIApplication hideNetworkActivityIndicator];
+    if (_showNetworkIndicator) {
+        [UIApplication hideNetworkActivityIndicator];
+    }
     
     _errorBlock(error);
     

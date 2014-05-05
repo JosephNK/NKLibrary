@@ -18,12 +18,41 @@ typedef void (^ErrorBlock)(NSError *error);
 @interface NKHTTPURLConnection : NSObject
 <NSURLConnectionDataDelegate, NSURLConnectionDelegate>
 
+/**
+ 
+ */
 @property (nonatomic, assign) NSURLRequest *request;
 
 /**
  Default : YES
  */
-@property (nonatomic, readwrite) BOOL async;
+@property (nonatomic, assign) BOOL async;
+
+/**
+ Default : YES
+ */
+@property (nonatomic, assign) BOOL showNetworkIndicator;
+
+/**
+ 
+ */
+@property (nonatomic, readonly, getter = getAllHeaderFields) NSString *allHeaderFields;
+
+/**
+ 
+ */
+@property (nonatomic, readonly, getter = getStatusCode) NSInteger statusCode;
+
+/**
+ 
+ */
+@property (nonatomic, readonly, getter = getTotalSize) long long totalSize;
+
+/**
+ 
+ */
+@property (nonatomic, readonly, getter = getCurrentSize) NSUInteger currentSize;
+
 
 + (instancetype)manager;
 
