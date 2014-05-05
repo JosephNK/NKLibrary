@@ -46,24 +46,22 @@
     manager.request.dataType = NKURLDataTypeJSON;
     //manager.request.HTTPMethod = @"POST";
     //manager.connection.async = YES;
-    [manager completeRequest:manager.request
-                  connection:manager.connection
-               responseBlock:^(NSURLResponse *response) {
-                   // Receive Response!
-                   LLog(@"Receive Response!");
-               } receiveBlock:^(NSData *data) {
-                   // Receive Data!
-                   //LLog(@"Receive Data!");
-               } completeBlock:^(NSData *data) {
-                   // success!
-                   LLog(@"Success!");
-                   //self.imageView.image = [UIImage imageWithData:data];
-                   NSString *myString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                   LLog(@"Success! = %@", myString);
-               } errorBlock:^(NSError *error) {
-                   // error!
-                   LLog(@"Error! = %@", [error description]);
-               }
+    [manager readyRequest:manager.request
+               connection:manager.connection
+            responseBlock:^(NSURLResponse *response) {
+                // Receive Response!
+                //LLog(@"Receive Response!");
+            } receiveBlock:^(NSData *data) {
+                // Receive Data!
+                //LLog(@"Receive Data!");
+            } successBlock:^(NSData *data) {
+                // success!
+                //self.imageView.image = [UIImage imageWithData:data];
+                LLog(@"Success! = %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            } errorBlock:^(NSError *error) {
+                // error!
+                LLog(@"Error! = %@", [error description]);
+            }
     ];
 }
 

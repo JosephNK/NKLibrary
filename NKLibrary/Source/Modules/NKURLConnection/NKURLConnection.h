@@ -13,11 +13,6 @@
 #import "NKHTTPURLRequest.h"
 #import "NKHTTPURLConnection.h"
 
-typedef void (^ResponseBlock)(NSURLResponse *response);
-typedef void (^ReceiveBlock)(NSData *data);
-typedef void (^CompleteBlock)(NSData *data);
-typedef void (^ErrorBlock)(NSError *error);
-
 @interface NKURLConnection : NSObject
 <NSURLConnectionDataDelegate, NSURLConnectionDelegate>
 
@@ -26,11 +21,11 @@ typedef void (^ErrorBlock)(NSError *error);
 
 + (instancetype)manager;
 
-- (void)completeRequest:(NKHTTPURLRequest *)request
-             connection:(NKHTTPURLConnection *)connection
-          responseBlock:(ResponseBlock)responseBlock
-           receiveBlock:(ReceiveBlock)receiveBlock
-          completeBlock:(CompleteBlock)completeBlock
-             errorBlock:(ErrorBlock)errorBlock;
+- (void)readyRequest:(NKHTTPURLRequest *)request
+          connection:(NKHTTPURLConnection *)connection
+       responseBlock:(void (^)(NSURLResponse *response))responseBlock
+        receiveBlock:(void (^)(NSData *data))receiveBlock
+        successBlock:(void (^)(NSData *data))successBlock
+          errorBlock:(void (^)(NSError *error))errorBlock;
 
 @end

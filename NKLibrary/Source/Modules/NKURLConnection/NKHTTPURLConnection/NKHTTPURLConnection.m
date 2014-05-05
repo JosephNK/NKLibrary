@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSMutableData *data;
 @property (nonatomic, copy) ResponseBlock responseBlock;
 @property (nonatomic, copy) ReceiveBlock receiveBlock;
-@property (nonatomic, copy) CompleteBlock completeBlock;
+@property (nonatomic, copy) SuccessBlock successBlock;
 @property (nonatomic, copy) ErrorBlock errorBlock;
 
 @property (nonatomic, strong) NSNumber *totalSize;
@@ -43,7 +43,7 @@
     NK_RELEASE(_conn); _conn = nil;
     NK_BLOCK_RELEASE(_responseBlock); _responseBlock = nil;
     NK_BLOCK_RELEASE(_receiveBlock); _receiveBlock = nil;
-    NK_BLOCK_RELEASE(_completeBlock); _completeBlock = nil;
+    NK_BLOCK_RELEASE(_successBlock); _successBlock = nil;
     NK_BLOCK_RELEASE(_errorBlock); _errorBlock = nil;
 }
 
@@ -65,12 +65,12 @@
 
 - (void)responseBlock:(ResponseBlock)responseBlock
          receiveBlock:(ReceiveBlock)receiveBlock
-        completeBlock:(CompleteBlock)completeBlock
+        successBlock:(SuccessBlock)successBlock
            errorBlock:(ErrorBlock)errorBlock {
     
     _responseBlock = NK_BLOCK_COPY(responseBlock);
     _receiveBlock = NK_BLOCK_COPY(receiveBlock);
-    _completeBlock = NK_BLOCK_COPY(completeBlock);
+    _successBlock = NK_BLOCK_COPY(successBlock);
     _errorBlock = NK_BLOCK_COPY(errorBlock);
     
     NSAssert(_request, @"<NSAssert> request is nil");
@@ -111,7 +111,7 @@
     if (error == nil) {
         _responseBlock(response);
         _receiveBlock(data);
-        _completeBlock(data);
+        _successBlock(data);
     }else {
         _errorBlock(error);
     }
@@ -148,7 +148,7 @@
 {
     [UIApplication hideNetworkActivityIndicator];
     
-    _completeBlock(_data);
+    _successBlock(_data);
     
     [self tearDown];
 }

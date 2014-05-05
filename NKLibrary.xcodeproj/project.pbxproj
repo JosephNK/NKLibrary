@@ -21,10 +21,10 @@
 		7CAFDB7C191652F100BCDC9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFDB5E191652F100BCDC9F /* UIKit.framework */; };
 		7CAFDB84191652F100BCDC9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7CAFDB82191652F100BCDC9F /* InfoPlist.strings */; };
 		7CAFDB86191652F100BCDC9F /* NKLibraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAFDB85191652F100BCDC9F /* NKLibraryTests.m */; };
-		7CB46D3C1917EF3800B32D99 /* NKHTTPURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB46D3B1917EF3800B32D99 /* NKHTTPURLRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		7CB46D3F1917EF4200B32D99 /* NKHTTPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB46D3E1917EF4200B32D99 /* NKHTTPURLConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7CB46D3C1917EF3800B32D99 /* NKHTTPURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB46D3B1917EF3800B32D99 /* NKHTTPURLRequest.m */; };
+		7CB46D3F1917EF4200B32D99 /* NKHTTPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB46D3E1917EF4200B32D99 /* NKHTTPURLConnection.m */; };
 		7CB6D51B1916B65B00B5E831 /* UIApplication+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB6D51A1916B65B00B5E831 /* UIApplication+Util.m */; };
-		7CB6D5211916C1B400B5E831 /* NKURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB6D5201916C1B400B5E831 /* NKURLConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7CB6D5211916C1B400B5E831 /* NKURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB6D5201916C1B400B5E831 /* NKURLConnection.m */; };
 		7CB788C91916F84B00F5074A /* NKUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB788C81916F84B00F5074A /* NKUtil.m */; };
 		7CB788CB1916F8DB00F5074A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB788CA1916F8DB00F5074A /* SystemConfiguration.framework */; };
 		7CB788CF1916F9D000F5074A /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB788CE1916F9D000F5074A /* NSString+Util.m */; };

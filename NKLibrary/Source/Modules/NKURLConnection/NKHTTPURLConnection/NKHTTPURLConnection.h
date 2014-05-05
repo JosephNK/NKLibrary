@@ -12,7 +12,7 @@
 
 typedef void (^ResponseBlock)(NSURLResponse *response);
 typedef void (^ReceiveBlock)(NSData *data);
-typedef void (^CompleteBlock)(NSData *data);
+typedef void (^SuccessBlock)(NSData *data);
 typedef void (^ErrorBlock)(NSError *error);
 
 @interface NKHTTPURLConnection : NSObject
@@ -29,7 +29,7 @@ typedef void (^ErrorBlock)(NSError *error);
 
 - (void)responseBlock:(ResponseBlock)responseBlock
          receiveBlock:(ReceiveBlock)receiveBlock
-        completeBlock:(CompleteBlock)completeBlock
+        successBlock:(SuccessBlock)successBlock
            errorBlock:(ErrorBlock)errorBlock;
 
 @end

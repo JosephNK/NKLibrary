@@ -10,18 +10,6 @@
 
 @interface NKURLConnection()
 
-@property (nonatomic, strong) NSURLConnection *conn;
-@property (nonatomic, strong) NSMutableData *data;
-@property (nonatomic, copy) ResponseBlock responseBlock;
-@property (nonatomic, copy) ReceiveBlock receiveBlock;
-@property (nonatomic, copy) CompleteBlock completeBlock;
-@property (nonatomic, copy) ErrorBlock errorBlock;
-
-@property (nonatomic, strong) NSNumber *totalSize;
-@property (nonatomic, strong) NSNumber *currentSize;
-@property (nonatomic, strong) NSString *contentType;
-@property (nonatomic, strong) NSURLResponse *response;
-
 @end
 
 @implementation NKURLConnection
@@ -53,17 +41,17 @@
 
 #pragma mark -
 
-- (void)completeRequest:(NKHTTPURLRequest *)request
-             connection:(NKHTTPURLConnection *)connection
-          responseBlock:(ResponseBlock)responseBlock
-           receiveBlock:(ReceiveBlock)receiveBlock
-          completeBlock:(CompleteBlock)completeBlock
-             errorBlock:(ErrorBlock)errorBlock {
+- (void)readyRequest:(NKHTTPURLRequest *)request
+          connection:(NKHTTPURLConnection *)connection
+       responseBlock:(void (^)(NSURLResponse *response))responseBlock
+        receiveBlock:(void (^)(NSData *data))receiveBlock
+        successBlock:(void (^)(NSData *data))successBlock
+          errorBlock:(void (^)(NSError *error))errorBlock {
     
     NSURLRequest *req = [self createRequestInfo:request];
     connection.request = req;
     
-    [connection responseBlock:responseBlock receiveBlock:receiveBlock completeBlock:completeBlock errorBlock:errorBlock];
+    [connection responseBlock:responseBlock receiveBlock:receiveBlock successBlock:successBlock errorBlock:errorBlock];
 }
 
 #pragma mark -
