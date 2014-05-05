@@ -9,7 +9,24 @@
 #import <Foundation/Foundation.h>
 #import "NKCategory.h"
 #import "NKMacro.h"
-#import "NKURL_ENUM.h"
+
+typedef NS_ENUM(NSUInteger, NKURLDataType) {
+    // HTTPHeaderField("Content-Type") Set "application/x-www-form-urlencoded";
+    // HTTPHeaderField("Accept") Set "*/*";
+    NKURLDataTypeTEXT,
+    
+    // HTTPHeaderField("Content-Type") Set "application/json;";
+    // HTTPHeaderField("Accept") Set "application/json;";
+    NKURLDataTypeJSON,
+    
+    // HTTPHeaderField("Content-Type") Set "application/json;";
+    // HTTPHeaderField("Accept") Set "*/*";
+    NKURLDataTypeReceiveJSON,
+    
+    // HTTPHeaderField("Content-Type") Set "*/*";
+    // HTTPHeaderField("Accept") Set "application/json;";
+    NKURLDataTypeResponseJSON,
+};
 
 @interface NKHTTPURLRequest : NSObject
 
@@ -63,7 +80,7 @@
 @property (nonatomic, strong) NSSet *HTTPMethodsEncodingParametersInURI;
 
 /**
- NKURLDataType Definitions; @see NKURL_ENUM.h
+ NKURLDataType Definitions; @see NKURLDataType
  
  Default : NKURLDataTypeTEXT
  */
