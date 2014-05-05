@@ -21,6 +21,8 @@
 		7CAFDB7C191652F100BCDC9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFDB5E191652F100BCDC9F /* UIKit.framework */; };
 		7CAFDB84191652F100BCDC9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7CAFDB82191652F100BCDC9F /* InfoPlist.strings */; };
 		7CAFDB86191652F100BCDC9F /* NKLibraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAFDB85191652F100BCDC9F /* NKLibraryTests.m */; };
+		7CB46D3C1917EF3800B32D99 /* NKHTTPURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB46D3B1917EF3800B32D99 /* NKHTTPURLRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7CB46D3F1917EF4200B32D99 /* NKHTTPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB46D3E1917EF4200B32D99 /* NKHTTPURLConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7CB6D51B1916B65B00B5E831 /* UIApplication+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB6D51A1916B65B00B5E831 /* UIApplication+Util.m */; };
 		7CB6D5211916C1B400B5E831 /* NKURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB6D5201916C1B400B5E831 /* NKURLConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7CB788C91916F84B00F5074A /* NKUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB788C81916F84B00F5074A /* NKUtil.m */; };
@@ -41,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C7E47D31918071B0075F6E5 /* NKURL_ENUM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKURL_ENUM.h; sourceTree = "<group>"; };
 		7CAFDB57191652F100BCDC9F /* NKLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NKLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CAFDB5A191652F100BCDC9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7CAFDB5C191652F100BCDC9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,6 +66,10 @@
 		7CB46D301917814B00B32D99 /* NKARCMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKARCMacro.h; sourceTree = "<group>"; };
 		7CB46D311917814B00B32D99 /* NKLogMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKLogMacro.h; sourceTree = "<group>"; };
 		7CB46D321917814B00B32D99 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		7CB46D3A1917EF3800B32D99 /* NKHTTPURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKHTTPURLRequest.h; sourceTree = "<group>"; };
+		7CB46D3B1917EF3800B32D99 /* NKHTTPURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKHTTPURLRequest.m; sourceTree = "<group>"; };
+		7CB46D3D1917EF4200B32D99 /* NKHTTPURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKHTTPURLConnection.h; sourceTree = "<group>"; };
+		7CB46D3E1917EF4200B32D99 /* NKHTTPURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKHTTPURLConnection.m; sourceTree = "<group>"; };
 		7CB6D4D119168FA700B5E831 /* NKMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKMacro.h; sourceTree = "<group>"; };
 		7CB6D5141916B59000B5E831 /* NKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKCategory.h; sourceTree = "<group>"; };
 		7CB6D5191916B65B00B5E831 /* UIApplication+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+Util.h"; sourceTree = "<group>"; };
@@ -181,6 +188,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7CB46D381917EF0D00B32D99 /* NKHTTPURLRequest */ = {
+			isa = PBXGroup;
+			children = (
+				7C7E47D31918071B0075F6E5 /* NKURL_ENUM.h */,
+				7CB46D3A1917EF3800B32D99 /* NKHTTPURLRequest.h */,
+				7CB46D3B1917EF3800B32D99 /* NKHTTPURLRequest.m */,
+			);
+			path = NKHTTPURLRequest;
+			sourceTree = "<group>";
+		};
+		7CB46D391917EF1800B32D99 /* NKHTTPURLConnection */ = {
+			isa = PBXGroup;
+			children = (
+				7CB46D3D1917EF4200B32D99 /* NKHTTPURLConnection.h */,
+				7CB46D3E1917EF4200B32D99 /* NKHTTPURLConnection.m */,
+			);
+			path = NKHTTPURLConnection;
+			sourceTree = "<group>";
+		};
 		7CB6D4C619168DD300B5E831 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +260,8 @@
 		7CB6D51E1916C1AC00B5E831 /* NKURLConnection */ = {
 			isa = PBXGroup;
 			children = (
+				7CB46D391917EF1800B32D99 /* NKHTTPURLConnection */,
+				7CB46D381917EF0D00B32D99 /* NKHTTPURLRequest */,
 				7CB6D51F1916C1B400B5E831 /* NKURLConnection.h */,
 				7CB6D5201916C1B400B5E831 /* NKURLConnection.m */,
 			);
@@ -370,8 +398,10 @@
 				7CB788C91916F84B00F5074A /* NKUtil.m in Sources */,
 				7CB788CF1916F9D000F5074A /* NSString+Util.m in Sources */,
 				7CB6D51B1916B65B00B5E831 /* UIApplication+Util.m in Sources */,
+				7CB46D3C1917EF3800B32D99 /* NKHTTPURLRequest.m in Sources */,
 				7CAFDB67191652F100BCDC9F /* main.m in Sources */,
 				7CB6D5211916C1B400B5E831 /* NKURLConnection.m in Sources */,
+				7CB46D3F1917EF4200B32D99 /* NKHTTPURLConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

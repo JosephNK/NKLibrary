@@ -26,7 +26,7 @@
 //    int a = 0;
 //    NSAssert(a == 0, @"a is not 0" );
     
-//    [self performSelector:@selector(test) withObject:nil afterDelay:2.0f];
+    [self performSelector:@selector(test2) withObject:nil afterDelay:1.0f];
     
 }
 
@@ -35,29 +35,35 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (void)test {
-    NSString *url = @"http://download.thinkbroadband.com/5MB.zip";
+- (void)test2 {
+    //NSString *url = @"http://download.thinkbroadband.com/5MB.zip";
     //NSString *url = @"http://www.ipadenclosures.com/php-oak/themes/global/admin_images/Apple_gray_logo.png";
-    
+    NSString *url = @"http://58.181.32.102:7000/net/index2.php";
+    NSDictionary *parameters = @{@"foo": @"한글", @"bar": @"123"};
     NKURLConnection *manager = [NKURLConnection manager];
-    [manager requestWithURL:url
-                       type:NKURLTypeGET
-                 parameters:nil
-                      async:NO
-       receiveResponseBlock:^(NSURLResponse *response) {
-           // Receive Response!
-           LLog(@"Receive Response!");
-       } receiveDataBlock:^(NSData *data) {
-           // Receive Data!
-           LLog(@"Receive Data!");
-       } completeBlock:^(NSData *data) {
-           // success!
-           LLog(@"Success!");
-       } errorBlock:^(NSError *error) {
-           // error!
-           LLog(@"Error!");
-       }
+    manager.request.requestURL = url;
+    manager.request.parameters = parameters;
+    manager.request.dataType = NKURLDataTypeJSON;
+    //manager.request.HTTPMethod = @"POST";
+    //manager.connection.async = YES;
+    [manager completeRequest:manager.request
+                  connection:manager.connection
+               responseBlock:^(NSURLResponse *response) {
+                   // Receive Response!
+                   LLog(@"Receive Response!");
+               } receiveBlock:^(NSData *data) {
+                   // Receive Data!
+                   //LLog(@"Receive Data!");
+               } completeBlock:^(NSData *data) {
+                   // success!
+                   LLog(@"Success!");
+                   //self.imageView.image = [UIImage imageWithData:data];
+                   NSString *myString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                   LLog(@"Success! = %@", myString);
+               } errorBlock:^(NSError *error) {
+                   // error!
+                   LLog(@"Error! = %@", [error description]);
+               }
     ];
 }
 

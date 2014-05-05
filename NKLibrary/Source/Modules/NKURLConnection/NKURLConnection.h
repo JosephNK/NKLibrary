@@ -10,27 +10,27 @@
 #import "NKCategory.h"
 #import "NKMacro.h"
 
-typedef NS_ENUM(NSUInteger, NKURLType) {
-    NKURLTypeGET,
-    NKURLTypePOST
-};
+#import "NKHTTPURLRequest.h"
+#import "NKHTTPURLConnection.h"
 
-typedef void (^ReceiveResponseBlock)(NSURLResponse *response);
-typedef void (^ReceiveDataBlock)(NSData *data);
+typedef void (^ResponseBlock)(NSURLResponse *response);
+typedef void (^ReceiveBlock)(NSData *data);
 typedef void (^CompleteBlock)(NSData *data);
 typedef void (^ErrorBlock)(NSError *error);
 
 @interface NKURLConnection : NSObject
+<NSURLConnectionDataDelegate, NSURLConnectionDelegate>
+
+@property (nonatomic, strong) NKHTTPURLRequest *request;
+@property (nonatomic, strong) NKHTTPURLConnection *connection;
 
 + (instancetype)manager;
 
-- (void)requestWithURL:(NSString *)url
-                  type:(NKURLType)type
-            parameters:(NSDictionary *)parameters
-                 async:(BOOL)bAsync
-  receiveResponseBlock:(ReceiveResponseBlock)receiveResponseBlock
-      receiveDataBlock:(ReceiveDataBlock)receiveDataBlock
-         completeBlock:(CompleteBlock)completeBlock
-            errorBlock:(ErrorBlock)errorBlock;
+- (void)completeRequest:(NKHTTPURLRequest *)request
+             connection:(NKHTTPURLConnection *)connection
+          responseBlock:(ResponseBlock)responseBlock
+           receiveBlock:(ReceiveBlock)receiveBlock
+          completeBlock:(CompleteBlock)completeBlock
+             errorBlock:(ErrorBlock)errorBlock;
 
 @end

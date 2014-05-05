@@ -14,7 +14,7 @@
 #define NK_BLOCK_COPY(x) (Block_copy(x))
 #define NK_BLOCK_RELEASE(x) (Block_release(x))
 #define NK_SUPER_DEALLOC() ([super dealloc])
-#define NK_BRIDGE_CAST(_type, _identifier) ((__bridge _type)(_identifier))
+#define NK_BRIDGE_CAST(_type, _identifier) ((_type)(_identifier))
 #define NK_AUTORELEASE_POOL_START() NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 #define NK_AUTORELEASE_POOL_END() [pool release];
 #else
@@ -25,7 +25,7 @@
 #define NK_BLOCK_COPY(x) (x)
 #define NK_BLOCK_RELEASE(x)
 #define NK_SUPER_DEALLOC()
-#define NK_BRIDGE_CAST(_type, _identifier) ((_type)(_identifier))
+#define NK_BRIDGE_CAST(_type, _identifier) ((__bridge _type)(_identifier))
 #define NK_AUTORELEASE_POOL_START() @autoreleasepool {
 #define NK_AUTORELEASE_POOL_END() }
 #endif
