@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C1FBEEC191B753000E6462A /* NSString+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1FBEEB191B753000E6462A /* NSString+Network.m */; };
+		7C1FBEEE191B75B300E6462A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1FBEED191B75B300E6462A /* CoreTelephony.framework */; };
+		7C1FBEF2191B766E00E6462A /* AVAudioSession+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1FBEF1191B766E00E6462A /* AVAudioSession+Util.m */; };
 		7CAFDB5B191652F100BCDC9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFDB5A191652F100BCDC9F /* Foundation.framework */; };
 		7CAFDB5D191652F100BCDC9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFDB5C191652F100BCDC9F /* CoreGraphics.framework */; };
 		7CAFDB5F191652F100BCDC9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFDB5E191652F100BCDC9F /* UIKit.framework */; };
@@ -44,6 +47,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C1FBEEA191B753000E6462A /* NSString+Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Network.h"; sourceTree = "<group>"; };
+		7C1FBEEB191B753000E6462A /* NSString+Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Network.m"; sourceTree = "<group>"; };
+		7C1FBEED191B75B300E6462A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		7C1FBEF0191B766E00E6462A /* AVAudioSession+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVAudioSession+Util.h"; sourceTree = "<group>"; };
+		7C1FBEF1191B766E00E6462A /* AVAudioSession+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVAudioSession+Util.m"; sourceTree = "<group>"; };
 		7CAFDB57191652F100BCDC9F /* NKLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NKLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CAFDB5A191652F100BCDC9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7CAFDB5C191652F100BCDC9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -92,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C1FBEEE191B75B300E6462A /* CoreTelephony.framework in Frameworks */,
 				7CD729D21919D5A2001FBA8F /* Security.framework in Frameworks */,
 				7CB788D11916F9FE00F5074A /* CoreLocation.framework in Frameworks */,
 				7CB788CB1916F8DB00F5074A /* SystemConfiguration.framework in Frameworks */,
@@ -114,6 +123,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C1FBEEF191B766000E6462A /* AVAudioSession */ = {
+			isa = PBXGroup;
+			children = (
+				7C1FBEF0191B766E00E6462A /* AVAudioSession+Util.h */,
+				7C1FBEF1191B766E00E6462A /* AVAudioSession+Util.m */,
+			);
+			path = AVAudioSession;
+			sourceTree = "<group>";
+		};
 		7CAFDB4E191652F000BCDC9F = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +154,7 @@
 		7CAFDB59191652F100BCDC9F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C1FBEED191B75B300E6462A /* CoreTelephony.framework */,
 				7CD729D11919D5A2001FBA8F /* Security.framework */,
 				7CB788D01916F9FE00F5074A /* CoreLocation.framework */,
 				7CB788CA1916F8DB00F5074A /* SystemConfiguration.framework */,
@@ -243,6 +262,7 @@
 		7CB6D5131916B55E00B5E831 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				7C1FBEEF191B766000E6462A /* AVAudioSession */,
 				7CB788CC1916F9BD00F5074A /* NSString */,
 				7CB6D5181916B65000B5E831 /* UIApplication */,
 				7CB6D5141916B59000B5E831 /* NKCategory.h */,
@@ -284,6 +304,8 @@
 			children = (
 				7CB788CD1916F9D000F5074A /* NSString+Util.h */,
 				7CB788CE1916F9D000F5074A /* NSString+Util.m */,
+				7C1FBEEA191B753000E6462A /* NSString+Network.h */,
+				7C1FBEEB191B753000E6462A /* NSString+Network.m */,
 			);
 			path = NSString;
 			sourceTree = "<group>";
@@ -396,9 +418,11 @@
 			files = (
 				7CAFDB71191652F100BCDC9F /* ViewController.m in Sources */,
 				7CAFDB6B191652F100BCDC9F /* AppDelegate.m in Sources */,
+				7C1FBEEC191B753000E6462A /* NSString+Network.m in Sources */,
 				7CB788D91916FEC700F5074A /* NKSingletonData.m in Sources */,
 				7CB788C91916F84B00F5074A /* NKUtil.m in Sources */,
 				7CB788CF1916F9D000F5074A /* NSString+Util.m in Sources */,
+				7C1FBEF2191B766E00E6462A /* AVAudioSession+Util.m in Sources */,
 				7CB6D51B1916B65B00B5E831 /* UIApplication+Util.m in Sources */,
 				7CB46D3C1917EF3800B32D99 /* NKHTTPURLRequest.m in Sources */,
 				7CAFDB67191652F100BCDC9F /* main.m in Sources */,

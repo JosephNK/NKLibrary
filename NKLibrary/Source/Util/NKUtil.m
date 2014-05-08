@@ -6,8 +6,9 @@
 //  Copyright (c) 2014년 JosephNK. All rights reserved.
 //
 
-#import "NKUtil.h"
 #include <sys/xattr.h>
+#import "NKUtil.h"
+#import "NKMacro.h"
 
 @implementation NKUtil
 
