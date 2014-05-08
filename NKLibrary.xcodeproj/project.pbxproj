@@ -30,6 +30,7 @@
 		7CB788CF1916F9D000F5074A /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB788CE1916F9D000F5074A /* NSString+Util.m */; };
 		7CB788D11916F9FE00F5074A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB788D01916F9FE00F5074A /* CoreLocation.framework */; };
 		7CB788D91916FEC700F5074A /* NKSingletonData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB788D81916FEC700F5074A /* NKSingletonData.m */; };
+		7CD729D21919D5A2001FBA8F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CD729D11919D5A2001FBA8F /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		7CB788D01916F9FE00F5074A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7CB788D71916FEC700F5074A /* NKSingletonData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKSingletonData.h; sourceTree = "<group>"; };
 		7CB788D81916FEC700F5074A /* NKSingletonData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKSingletonData.m; sourceTree = "<group>"; };
+		7CD729D11919D5A2001FBA8F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CD729D21919D5A2001FBA8F /* Security.framework in Frameworks */,
 				7CB788D11916F9FE00F5074A /* CoreLocation.framework in Frameworks */,
 				7CB788CB1916F8DB00F5074A /* SystemConfiguration.framework in Frameworks */,
 				7CAFDB5D191652F100BCDC9F /* CoreGraphics.framework in Frameworks */,
@@ -133,6 +136,7 @@
 		7CAFDB59191652F100BCDC9F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7CD729D11919D5A2001FBA8F /* Security.framework */,
 				7CB788D01916F9FE00F5074A /* CoreLocation.framework */,
 				7CB788CA1916F8DB00F5074A /* SystemConfiguration.framework */,
 				7CAFDB5A191652F100BCDC9F /* Foundation.framework */,

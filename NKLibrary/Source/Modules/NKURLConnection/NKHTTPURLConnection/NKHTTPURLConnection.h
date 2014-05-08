@@ -34,9 +34,18 @@ typedef void (^ErrorBlock)(NSError *error);
 @property (nonatomic, assign) BOOL showNetworkIndicator;
 
 /**
+ */
+@property (nonatomic, readonly, getter = getCacheHeaders) NSDictionary *cacheHeaders;
+
+/**
  
  */
-@property (nonatomic, readonly, getter = getAllHeaderFields) NSString *allHeaderFields;
+@property (nonatomic, readonly, getter = getAllCookies) NSArray *allCookies;
+
+/**
+ 
+ */
+@property (nonatomic, readonly, getter = getAllHeaderFields) NSDictionary *allHeaderFields;
 
 /**
  

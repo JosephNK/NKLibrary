@@ -113,7 +113,8 @@
         [UIApplication hideNetworkActivityIndicator];
     }
     if (error == nil) {
-        _allHeaderFields = [[(NSHTTPURLResponse*)response allHeaderFields] description];
+        _allHeaderFields = [(NSHTTPURLResponse*)response allHeaderFields];
+        _allCookies = [NSHTTPCookie cookiesWithResponseHeaderFields:_allHeaderFields forURL:[response URL]];
         _totalSize = [response expectedContentLength];  // bytes
         _statusCode = [(NSHTTPURLResponse*)response statusCode];
         _currentSize = [data length];  // bytes
@@ -131,11 +132,22 @@
 
 #pragma mark -
 
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse*)cachedResponse
+{
+    // Return nil to indicate not necessary to store a cached response for this connection
+    
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)[cachedResponse response];
+    _cacheHeaders = [httpResponse allHeaderFields];
+    
+    return nil;
+}
+
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     [_data setLength:0];
     
-    _allHeaderFields = [[(NSHTTPURLResponse*)response allHeaderFields] description];
+    _allHeaderFields = [(NSHTTPURLResponse*)response allHeaderFields];
+    _allCookies = [NSHTTPCookie cookiesWithResponseHeaderFields:_allHeaderFields forURL:[response URL]];
     _totalSize = [response expectedContentLength];  // bytes
     _statusCode = [(NSHTTPURLResponse*)response statusCode];
     
