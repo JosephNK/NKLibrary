@@ -80,7 +80,6 @@
 		7CAFDB85191652F100BCDC9F /* NKLibraryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKLibraryTests.m; sourceTree = "<group>"; };
 		7CB46D301917814B00B32D99 /* NKARCMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKARCMacro.h; sourceTree = "<group>"; };
 		7CB46D311917814B00B32D99 /* NKLogMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKLogMacro.h; sourceTree = "<group>"; };
-		7CB46D321917814B00B32D99 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		7CB46D3A1917EF3800B32D99 /* NKHTTPURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKHTTPURLRequest.h; sourceTree = "<group>"; };
 		7CB46D3B1917EF3800B32D99 /* NKHTTPURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKHTTPURLRequest.m; sourceTree = "<group>"; };
 		7CB46D3D1917EF4200B32D99 /* NKHTTPURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKHTTPURLConnection.h; sourceTree = "<group>"; };
@@ -89,6 +88,7 @@
 		7CB49DD31927C6F60025398C /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		7CB49DD51927CA850025398C /* NKKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKKeychain.h; sourceTree = "<group>"; };
 		7CB49DD61927CA850025398C /* NKKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKKeychain.m; sourceTree = "<group>"; };
+		7CB49DD91927D9140025398C /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		7CB6D4D119168FA700B5E831 /* NKMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKMacro.h; sourceTree = "<group>"; };
 		7CB6D5141916B59000B5E831 /* NKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKCategory.h; sourceTree = "<group>"; };
 		7CB6D5191916B65B00B5E831 /* UIApplication+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+Util.h"; sourceTree = "<group>"; };
@@ -276,6 +276,14 @@
 			path = KeychainItemWrapper;
 			sourceTree = "<group>";
 		};
+		7CB49DD81927D9140025398C /* SynthesizeSingleton */ = {
+			isa = PBXGroup;
+			children = (
+				7CB49DD91927D9140025398C /* SynthesizeSingleton.h */,
+			);
+			path = SynthesizeSingleton;
+			sourceTree = "<group>";
+		};
 		7CB6D4C619168DD300B5E831 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,7 +309,6 @@
 		7CB6D4CF19168EF400B5E831 /* Macro */ = {
 			isa = PBXGroup;
 			children = (
-				7CB46D321917814B00B32D99 /* SynthesizeSingleton.h */,
 				7CB46D301917814B00B32D99 /* NKARCMacro.h */,
 				7CB46D311917814B00B32D99 /* NKLogMacro.h */,
 				7CB6D4D119168FA700B5E831 /* NKMacro.h */,
@@ -364,6 +371,7 @@
 		7CB788D61916FEBC00F5074A /* NKSingletonData */ = {
 			isa = PBXGroup;
 			children = (
+				7CB49DD81927D9140025398C /* SynthesizeSingleton */,
 				7CB788D71916FEC700F5074A /* NKSingletonData.h */,
 				7CB788D81916FEC700F5074A /* NKSingletonData.m */,
 			);
