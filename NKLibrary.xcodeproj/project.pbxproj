@@ -10,6 +10,8 @@
 		7C1FBEEC191B753000E6462A /* NSString+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1FBEEB191B753000E6462A /* NSString+Network.m */; };
 		7C1FBEEE191B75B300E6462A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1FBEED191B75B300E6462A /* CoreTelephony.framework */; };
 		7C1FBEF2191B766E00E6462A /* AVAudioSession+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1FBEF1191B766E00E6462A /* AVAudioSession+Util.m */; };
+		7C1FBEF7191B788300E6462A /* NKImageMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1FBEF6191B788300E6462A /* NKImageMetaData.m */; };
+		7C1FBEF9191B788F00E6462A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1FBEF8191B788F00E6462A /* ImageIO.framework */; };
 		7CAFDB5B191652F100BCDC9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFDB5A191652F100BCDC9F /* Foundation.framework */; };
 		7CAFDB5D191652F100BCDC9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFDB5C191652F100BCDC9F /* CoreGraphics.framework */; };
 		7CAFDB5F191652F100BCDC9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFDB5E191652F100BCDC9F /* UIKit.framework */; };
@@ -26,6 +28,8 @@
 		7CAFDB86191652F100BCDC9F /* NKLibraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAFDB85191652F100BCDC9F /* NKLibraryTests.m */; };
 		7CB46D3C1917EF3800B32D99 /* NKHTTPURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB46D3B1917EF3800B32D99 /* NKHTTPURLRequest.m */; };
 		7CB46D3F1917EF4200B32D99 /* NKHTTPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB46D3E1917EF4200B32D99 /* NKHTTPURLConnection.m */; };
+		7CB49DD41927C6F60025398C /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB49DD31927C6F60025398C /* KeychainItemWrapper.m */; };
+		7CB49DD71927CA850025398C /* NKKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB49DD61927CA850025398C /* NKKeychain.m */; };
 		7CB6D51B1916B65B00B5E831 /* UIApplication+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB6D51A1916B65B00B5E831 /* UIApplication+Util.m */; };
 		7CB6D5211916C1B400B5E831 /* NKURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB6D5201916C1B400B5E831 /* NKURLConnection.m */; };
 		7CB788C91916F84B00F5074A /* NKUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB788C81916F84B00F5074A /* NKUtil.m */; };
@@ -52,6 +56,9 @@
 		7C1FBEED191B75B300E6462A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		7C1FBEF0191B766E00E6462A /* AVAudioSession+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVAudioSession+Util.h"; sourceTree = "<group>"; };
 		7C1FBEF1191B766E00E6462A /* AVAudioSession+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVAudioSession+Util.m"; sourceTree = "<group>"; };
+		7C1FBEF5191B788300E6462A /* NKImageMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKImageMetaData.h; sourceTree = "<group>"; };
+		7C1FBEF6191B788300E6462A /* NKImageMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKImageMetaData.m; sourceTree = "<group>"; };
+		7C1FBEF8191B788F00E6462A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		7CAFDB57191652F100BCDC9F /* NKLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NKLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CAFDB5A191652F100BCDC9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7CAFDB5C191652F100BCDC9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -78,6 +85,10 @@
 		7CB46D3B1917EF3800B32D99 /* NKHTTPURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKHTTPURLRequest.m; sourceTree = "<group>"; };
 		7CB46D3D1917EF4200B32D99 /* NKHTTPURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKHTTPURLConnection.h; sourceTree = "<group>"; };
 		7CB46D3E1917EF4200B32D99 /* NKHTTPURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKHTTPURLConnection.m; sourceTree = "<group>"; };
+		7CB49DD21927C6F60025398C /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		7CB49DD31927C6F60025398C /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		7CB49DD51927CA850025398C /* NKKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKKeychain.h; sourceTree = "<group>"; };
+		7CB49DD61927CA850025398C /* NKKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKKeychain.m; sourceTree = "<group>"; };
 		7CB6D4D119168FA700B5E831 /* NKMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKMacro.h; sourceTree = "<group>"; };
 		7CB6D5141916B59000B5E831 /* NKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKCategory.h; sourceTree = "<group>"; };
 		7CB6D5191916B65B00B5E831 /* UIApplication+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+Util.h"; sourceTree = "<group>"; };
@@ -100,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C1FBEF9191B788F00E6462A /* ImageIO.framework in Frameworks */,
 				7C1FBEEE191B75B300E6462A /* CoreTelephony.framework in Frameworks */,
 				7CD729D21919D5A2001FBA8F /* Security.framework in Frameworks */,
 				7CB788D11916F9FE00F5074A /* CoreLocation.framework in Frameworks */,
@@ -132,6 +144,22 @@
 			path = AVAudioSession;
 			sourceTree = "<group>";
 		};
+		7C1FBEF3191B779E00E6462A /* NSDictionary */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NSDictionary;
+			sourceTree = "<group>";
+		};
+		7C1FBEF4191B787600E6462A /* NKImageMetaData */ = {
+			isa = PBXGroup;
+			children = (
+				7C1FBEF5191B788300E6462A /* NKImageMetaData.h */,
+				7C1FBEF6191B788300E6462A /* NKImageMetaData.m */,
+			);
+			path = NKImageMetaData;
+			sourceTree = "<group>";
+		};
 		7CAFDB4E191652F000BCDC9F = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +182,7 @@
 		7CAFDB59191652F100BCDC9F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C1FBEF8191B788F00E6462A /* ImageIO.framework */,
 				7C1FBEED191B75B300E6462A /* CoreTelephony.framework */,
 				7CD729D11919D5A2001FBA8F /* Security.framework */,
 				7CB788D01916F9FE00F5074A /* CoreLocation.framework */,
@@ -228,6 +257,25 @@
 			path = NKHTTPURLConnection;
 			sourceTree = "<group>";
 		};
+		7CB49DD01927C6F60025398C /* NKKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				7CB49DD11927C6F60025398C /* KeychainItemWrapper */,
+				7CB49DD51927CA850025398C /* NKKeychain.h */,
+				7CB49DD61927CA850025398C /* NKKeychain.m */,
+			);
+			path = NKKeychain;
+			sourceTree = "<group>";
+		};
+		7CB49DD11927C6F60025398C /* KeychainItemWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				7CB49DD21927C6F60025398C /* KeychainItemWrapper.h */,
+				7CB49DD31927C6F60025398C /* KeychainItemWrapper.m */,
+			);
+			path = KeychainItemWrapper;
+			sourceTree = "<group>";
+		};
 		7CB6D4C619168DD300B5E831 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +290,8 @@
 		7CB6D4C819168DD300B5E831 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				7CB49DD01927C6F60025398C /* NKKeychain */,
+				7C1FBEF4191B787600E6462A /* NKImageMetaData */,
 				7CB788D61916FEBC00F5074A /* NKSingletonData */,
 				7CB6D51E1916C1AC00B5E831 /* NKURLConnection */,
 			);
@@ -262,6 +312,7 @@
 		7CB6D5131916B55E00B5E831 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				7C1FBEF3191B779E00E6462A /* NSDictionary */,
 				7C1FBEEF191B766000E6462A /* AVAudioSession */,
 				7CB788CC1916F9BD00F5074A /* NSString */,
 				7CB6D5181916B65000B5E831 /* UIApplication */,
@@ -418,9 +469,12 @@
 			files = (
 				7CAFDB71191652F100BCDC9F /* ViewController.m in Sources */,
 				7CAFDB6B191652F100BCDC9F /* AppDelegate.m in Sources */,
+				7C1FBEF7191B788300E6462A /* NKImageMetaData.m in Sources */,
 				7C1FBEEC191B753000E6462A /* NSString+Network.m in Sources */,
 				7CB788D91916FEC700F5074A /* NKSingletonData.m in Sources */,
+				7CB49DD71927CA850025398C /* NKKeychain.m in Sources */,
 				7CB788C91916F84B00F5074A /* NKUtil.m in Sources */,
+				7CB49DD41927C6F60025398C /* KeychainItemWrapper.m in Sources */,
 				7CB788CF1916F9D000F5074A /* NSString+Util.m in Sources */,
 				7C1FBEF2191B766E00E6462A /* AVAudioSession+Util.m in Sources */,
 				7CB6D51B1916B65B00B5E831 /* UIApplication+Util.m in Sources */,
