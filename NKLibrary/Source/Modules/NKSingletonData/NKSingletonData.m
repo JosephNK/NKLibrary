@@ -7,7 +7,6 @@
 //
 
 #import "NKSingletonData.h"
-#import "SynthesizeSingleton.h"
 
 @implementation NKSingletonData
 SYNTHESIZE_SINGLETON_FOR_CLASS(NKSingletonData);

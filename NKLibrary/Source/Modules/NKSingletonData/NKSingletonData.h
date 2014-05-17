@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SynthesizeSingleton.h"
 
 @interface NKSingletonData : NSObject
 
