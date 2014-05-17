@@ -7,9 +7,7 @@
 //
 
 #import <ImageIO/ImageIO.h>
-
 #import "NKImageMetaData.h"
-
 #import "NKARCMacro.h"
 
 @implementation NSMutableDictionary (ImageMetaData)

@@ -7,9 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NKCategory.h"
-#import "NKMacro.h"
-
 #import "NKHTTPURLRequest.h"
 #import "NKHTTPURLConnection.h"
 

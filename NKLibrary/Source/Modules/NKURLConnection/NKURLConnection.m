@@ -7,6 +7,8 @@
 //
 
 #import "NKURLConnection.h"
+#import "NKCategory.h"
+#import "NKMacro.h"
 
 @interface NKURLConnection()
 

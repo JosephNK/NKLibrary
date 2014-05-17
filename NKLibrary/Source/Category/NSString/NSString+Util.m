@@ -8,10 +8,31 @@
 
 #import <CoreLocation/CoreLocation.h>
 #import "NSString+Util.h"
-
 #import "NKMacro.h"
 
 @implementation NSString (Util)
+
+#pragma mark -
+
++ (NSString *)bundleSeedID {
+    NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:
+                           NK_BRIDGE_CAST(id, kSecClassGenericPassword), kSecClass,
+                           @"bundleSeedID", kSecAttrAccount,
+                           @"", kSecAttrService,
+                           (id)kCFBooleanTrue, kSecReturnAttributes,
+                           nil];
+    CFDictionaryRef result = nil;
+    OSStatus status = SecItemCopyMatching(NK_BRIDGE_CAST(CFDictionaryRef, query), (CFTypeRef *)&result);
+    if (status == errSecItemNotFound)
+        status = SecItemAdd(NK_BRIDGE_CAST(CFDictionaryRef, query), (CFTypeRef *)&result);
+    if (status != errSecSuccess)
+        return nil;
+    NSString *accessGroup = [NK_BRIDGE_CAST(NSDictionary *, result) objectForKey:NK_BRIDGE_CAST(id, kSecAttrAccessGroup)];
+    NSArray *components = [accessGroup componentsSeparatedByString:@"."];
+    NSString *bundleSeedID = [[components objectEnumerator] nextObject];
+    CFRelease(result);
+    return bundleSeedID;
+}
 
 #pragma mark -
 

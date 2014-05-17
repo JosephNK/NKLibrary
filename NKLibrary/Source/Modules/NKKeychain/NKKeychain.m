@@ -7,6 +7,7 @@
 //
 
 #import "NKKeychain.h"
+#import "KeychainItemWrapper.h"
 #import "NKMacro.h"
 
 @implementation NSString (Bundle)

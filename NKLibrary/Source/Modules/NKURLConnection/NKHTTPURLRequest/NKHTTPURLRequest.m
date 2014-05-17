@@ -7,6 +7,8 @@
 //
 
 #import "NKHTTPURLRequest.h"
+#import "NKCategory.h"
+#import "NKMacro.h"
 
 @implementation NKHTTPURLRequest
 

@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NKCategory.h"
-#import "NKMacro.h"
 
 typedef NS_ENUM(NSUInteger, NKDataType) {
     // HTTPHeaderField("Content-Type")  Set "application/x-www-form-urlencoded";

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KeychainItemWrapper.h"
 
 /**
  Xcode 5
@@ -38,13 +37,22 @@ __attribute__((deprecated("You should use 'initWithIdentifier: accessGroup:' "))
  */
 - (id)initWithIdentifier:(NSString *)identifier accessGroup:(NSString *)accessGroup;
 
+/**
+ 
+ */
 - (void)resetKeychainItem;
 
+/**
+ 
+ */
 - (void)setAccount:(NSString *)account;
 - (void)setLabel:(NSString *)label;
 - (void)setDescription:(NSString *)description;
 - (void)setData:(NSData *)data;
 
+/**
+ 
+ */
 - (NSString *)getAccount;
 - (NSString *)getLabel;
 - (NSString *)getDescription;

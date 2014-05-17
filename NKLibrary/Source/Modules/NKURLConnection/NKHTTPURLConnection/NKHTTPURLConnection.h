@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NKCategory.h"
-#import "NKMacro.h"
 
 typedef void (^ResponseBlock)(NSURLResponse *response);
 typedef void (^ReceiveBlock)(NSData *data);

@@ -11,6 +11,11 @@
 @interface NSString (Util)
 
 /**
+ 
+ */
++ (NSString *)bundleSeedID;
+
+/**
  The Distance From The Source Lat with Long
  */
 + (float)calcCLLocationDistanceWithSourceLat:(float)ulat SourceLong:(float)ulong
