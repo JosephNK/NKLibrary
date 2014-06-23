@@ -96,6 +96,7 @@
     if (errorFlag != NULL)
     {
         NSLog(@"Error: %@", errorFlag);
+        free(msgBuffer);
         return errorFlag;
     }
     // Map msgbuffer to interface message structure

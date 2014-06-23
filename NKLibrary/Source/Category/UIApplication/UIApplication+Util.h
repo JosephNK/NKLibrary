@@ -10,9 +10,15 @@
 
 @interface UIApplication (Util)
 
+#define UIAppDelegate \
+((AppDelegate *)[UIApplication sharedApplication].delegate)
+
 + (id)appDelegate;
 
 + (void)showNetworkActivityIndicator;
 + (void)hideNetworkActivityIndicator;
+
++ (BOOL)checkJailBroken;
++ (BOOL)checkPiracy;
 
 @end

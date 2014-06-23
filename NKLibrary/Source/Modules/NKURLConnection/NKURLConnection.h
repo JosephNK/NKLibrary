@@ -7,22 +7,31 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NKHTTPURLRequest.h"
-#import "NKHTTPURLConnection.h"
+#import "NKURLRequest.h"
+#import "NKURLConnectionOperation.h"
 
 @interface NKURLConnection : NSObject
-<NSURLConnectionDataDelegate, NSURLConnectionDelegate>
 
-@property (nonatomic, strong) NKHTTPURLRequest *request;
-@property (nonatomic, strong) NKHTTPURLConnection *connection;
+@property (nonatomic, strong) NSOperationQueue *operationQueue;
 
 + (instancetype)manager;
 
-- (void)readyRequest:(NKHTTPURLRequest *)request
-          connection:(NKHTTPURLConnection *)connection
-       responseBlock:(void (^)(NSURLResponse *response))responseBlock
-        receiveBlock:(void (^)(NSData *data))receiveBlock
-        successBlock:(void (^)(NSData *data))successBlock
-          errorBlock:(void (^)(NSError *error))errorBlock;
+- (void)requestHttpURL:(NSString *)urlString
+                method:(NSString *)method
+            parameters:(id)parameters
+               success:(NKOperationSuccessHandler)successHandler
+                 error:(NKOperationErrorHandler)errorHandler;
+
+- (void)requestJsonURL:(NSString *)urlString
+                method:(NSString *)method
+            parameters:(id)parameters
+               success:(NKOperationSuccessHandler)successHandler
+                 error:(NKOperationErrorHandler)errorHandler;
+
+- (void)requestXMLURL:(NSString *)urlString
+               method:(NSString *)method
+           parameters:(id)parameters
+              success:(NKOperationSuccessHandler)successHandler
+                error:(NKOperationErrorHandler)errorHandler;
 
 @end

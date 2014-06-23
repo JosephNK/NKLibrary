@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C090E7A1956EC2600D70960 /* NKURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C090E791956EC2600D70960 /* NKURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7C1FBEEC191B753000E6462A /* NSString+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1FBEEB191B753000E6462A /* NSString+Network.m */; };
 		7C1FBEEE191B75B300E6462A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1FBEED191B75B300E6462A /* CoreTelephony.framework */; };
 		7C1FBEF2191B766E00E6462A /* AVAudioSession+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1FBEF1191B766E00E6462A /* AVAudioSession+Util.m */; };
 		7C1FBEF7191B788300E6462A /* NKImageMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1FBEF6191B788300E6462A /* NKImageMetaData.m */; };
 		7C1FBEF9191B788F00E6462A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1FBEF8191B788F00E6462A /* ImageIO.framework */; };
+		7C3A4DDD1957D7D800010245 /* NKURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A4DDC1957D7D800010245 /* NKURLRequest.m */; };
+		7C3A4DE11957D8AD00010245 /* NKURLRequest+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A4DE01957D8AD00010245 /* NKURLRequest+Util.m */; };
 		7CAFDB5B191652F100BCDC9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFDB5A191652F100BCDC9F /* Foundation.framework */; };
 		7CAFDB5D191652F100BCDC9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFDB5C191652F100BCDC9F /* CoreGraphics.framework */; };
 		7CAFDB5F191652F100BCDC9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFDB5E191652F100BCDC9F /* UIKit.framework */; };
@@ -26,17 +29,16 @@
 		7CAFDB7C191652F100BCDC9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAFDB5E191652F100BCDC9F /* UIKit.framework */; };
 		7CAFDB84191652F100BCDC9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7CAFDB82191652F100BCDC9F /* InfoPlist.strings */; };
 		7CAFDB86191652F100BCDC9F /* NKLibraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAFDB85191652F100BCDC9F /* NKLibraryTests.m */; };
-		7CB46D3C1917EF3800B32D99 /* NKHTTPURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB46D3B1917EF3800B32D99 /* NKHTTPURLRequest.m */; };
-		7CB46D3F1917EF4200B32D99 /* NKHTTPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB46D3E1917EF4200B32D99 /* NKHTTPURLConnection.m */; };
 		7CB49DD41927C6F60025398C /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB49DD31927C6F60025398C /* KeychainItemWrapper.m */; };
 		7CB49DD71927CA850025398C /* NKKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB49DD61927CA850025398C /* NKKeychain.m */; };
 		7CB6D51B1916B65B00B5E831 /* UIApplication+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB6D51A1916B65B00B5E831 /* UIApplication+Util.m */; };
-		7CB6D5211916C1B400B5E831 /* NKURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB6D5201916C1B400B5E831 /* NKURLConnection.m */; };
+		7CB6D5211916C1B400B5E831 /* NKURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB6D5201916C1B400B5E831 /* NKURLConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7CB788C91916F84B00F5074A /* NKUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB788C81916F84B00F5074A /* NKUtil.m */; };
 		7CB788CB1916F8DB00F5074A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB788CA1916F8DB00F5074A /* SystemConfiguration.framework */; };
 		7CB788CF1916F9D000F5074A /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB788CE1916F9D000F5074A /* NSString+Util.m */; };
 		7CB788D11916F9FE00F5074A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB788D01916F9FE00F5074A /* CoreLocation.framework */; };
 		7CB788D91916FEC700F5074A /* NKSingletonData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB788D81916FEC700F5074A /* NKSingletonData.m */; };
+		7CD1AAEA194546E9005B8FEF /* CLLocation+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1AAE9194546E9005B8FEF /* CLLocation+Util.m */; };
 		7CD729D21919D5A2001FBA8F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CD729D11919D5A2001FBA8F /* Security.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C090E781956EC2600D70960 /* NKURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKURLConnectionOperation.h; sourceTree = "<group>"; };
+		7C090E791956EC2600D70960 /* NKURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKURLConnectionOperation.m; sourceTree = "<group>"; };
 		7C1FBEEA191B753000E6462A /* NSString+Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Network.h"; sourceTree = "<group>"; };
 		7C1FBEEB191B753000E6462A /* NSString+Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Network.m"; sourceTree = "<group>"; };
 		7C1FBEED191B75B300E6462A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -59,6 +63,10 @@
 		7C1FBEF5191B788300E6462A /* NKImageMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKImageMetaData.h; sourceTree = "<group>"; };
 		7C1FBEF6191B788300E6462A /* NKImageMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKImageMetaData.m; sourceTree = "<group>"; };
 		7C1FBEF8191B788F00E6462A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		7C3A4DDB1957D7D800010245 /* NKURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKURLRequest.h; sourceTree = "<group>"; };
+		7C3A4DDC1957D7D800010245 /* NKURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKURLRequest.m; sourceTree = "<group>"; };
+		7C3A4DDF1957D8AD00010245 /* NKURLRequest+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NKURLRequest+Util.h"; sourceTree = "<group>"; };
+		7C3A4DE01957D8AD00010245 /* NKURLRequest+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NKURLRequest+Util.m"; sourceTree = "<group>"; };
 		7CAFDB57191652F100BCDC9F /* NKLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NKLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CAFDB5A191652F100BCDC9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7CAFDB5C191652F100BCDC9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -80,10 +88,6 @@
 		7CAFDB85191652F100BCDC9F /* NKLibraryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NKLibraryTests.m; sourceTree = "<group>"; };
 		7CB46D301917814B00B32D99 /* NKARCMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKARCMacro.h; sourceTree = "<group>"; };
 		7CB46D311917814B00B32D99 /* NKLogMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKLogMacro.h; sourceTree = "<group>"; };
-		7CB46D3A1917EF3800B32D99 /* NKHTTPURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKHTTPURLRequest.h; sourceTree = "<group>"; };
-		7CB46D3B1917EF3800B32D99 /* NKHTTPURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKHTTPURLRequest.m; sourceTree = "<group>"; };
-		7CB46D3D1917EF4200B32D99 /* NKHTTPURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKHTTPURLConnection.h; sourceTree = "<group>"; };
-		7CB46D3E1917EF4200B32D99 /* NKHTTPURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKHTTPURLConnection.m; sourceTree = "<group>"; };
 		7CB49DD21927C6F60025398C /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		7CB49DD31927C6F60025398C /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		7CB49DD51927CA850025398C /* NKKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKKeychain.h; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 		7CB788D01916F9FE00F5074A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7CB788D71916FEC700F5074A /* NKSingletonData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKSingletonData.h; sourceTree = "<group>"; };
 		7CB788D81916FEC700F5074A /* NKSingletonData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKSingletonData.m; sourceTree = "<group>"; };
+		7CD1AAE8194546E9005B8FEF /* CLLocation+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+Util.h"; sourceTree = "<group>"; };
+		7CD1AAE9194546E9005B8FEF /* CLLocation+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+Util.m"; sourceTree = "<group>"; };
 		7CD729D11919D5A2001FBA8F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -135,6 +141,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C090E771956EC1B00D70960 /* NKURLConnectionOperation */ = {
+			isa = PBXGroup;
+			children = (
+				7C090E781956EC2600D70960 /* NKURLConnectionOperation.h */,
+				7C090E791956EC2600D70960 /* NKURLConnectionOperation.m */,
+			);
+			path = NKURLConnectionOperation;
+			sourceTree = "<group>";
+		};
 		7C1FBEEF191B766000E6462A /* AVAudioSession */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +173,32 @@
 				7C1FBEF6191B788300E6462A /* NKImageMetaData.m */,
 			);
 			path = NKImageMetaData;
+			sourceTree = "<group>";
+		};
+		7C3A4DDA1957D7CB00010245 /* NKURLRequest */ = {
+			isa = PBXGroup;
+			children = (
+				7C3A4DDE1957D89800010245 /* Category */,
+				7C3A4DDB1957D7D800010245 /* NKURLRequest.h */,
+				7C3A4DDC1957D7D800010245 /* NKURLRequest.m */,
+			);
+			path = NKURLRequest;
+			sourceTree = "<group>";
+		};
+		7C3A4DDE1957D89800010245 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				7C3A4DDF1957D8AD00010245 /* NKURLRequest+Util.h */,
+				7C3A4DE01957D8AD00010245 /* NKURLRequest+Util.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		7C8C86CC194AA818003E830F /* OpenSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OpenSource;
 			sourceTree = "<group>";
 		};
 		7CAFDB4E191652F000BCDC9F = {
@@ -198,6 +239,7 @@
 		7CAFDB60191652F100BCDC9F /* NKLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				7C8C86CC194AA818003E830F /* OpenSource */,
 				7CB6D4C619168DD300B5E831 /* Source */,
 				7CAFDB6F191652F100BCDC9F /* ViewController.h */,
 				7CAFDB70191652F100BCDC9F /* ViewController.m */,
@@ -237,24 +279,6 @@
 				7CAFDB82191652F100BCDC9F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		7CB46D381917EF0D00B32D99 /* NKHTTPURLRequest */ = {
-			isa = PBXGroup;
-			children = (
-				7CB46D3A1917EF3800B32D99 /* NKHTTPURLRequest.h */,
-				7CB46D3B1917EF3800B32D99 /* NKHTTPURLRequest.m */,
-			);
-			path = NKHTTPURLRequest;
-			sourceTree = "<group>";
-		};
-		7CB46D391917EF1800B32D99 /* NKHTTPURLConnection */ = {
-			isa = PBXGroup;
-			children = (
-				7CB46D3D1917EF4200B32D99 /* NKHTTPURLConnection.h */,
-				7CB46D3E1917EF4200B32D99 /* NKHTTPURLConnection.m */,
-			);
-			path = NKHTTPURLConnection;
 			sourceTree = "<group>";
 		};
 		7CB49DD01927C6F60025398C /* NKKeychain */ = {
@@ -319,6 +343,7 @@
 		7CB6D5131916B55E00B5E831 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				7CD1AAE7194546D8005B8FEF /* CLLocation */,
 				7C1FBEF3191B779E00E6462A /* NSDictionary */,
 				7C1FBEEF191B766000E6462A /* AVAudioSession */,
 				7CB788CC1916F9BD00F5074A /* NSString */,
@@ -340,8 +365,8 @@
 		7CB6D51E1916C1AC00B5E831 /* NKURLConnection */ = {
 			isa = PBXGroup;
 			children = (
-				7CB46D391917EF1800B32D99 /* NKHTTPURLConnection */,
-				7CB46D381917EF0D00B32D99 /* NKHTTPURLRequest */,
+				7C090E771956EC1B00D70960 /* NKURLConnectionOperation */,
+				7C3A4DDA1957D7CB00010245 /* NKURLRequest */,
 				7CB6D51F1916C1B400B5E831 /* NKURLConnection.h */,
 				7CB6D5201916C1B400B5E831 /* NKURLConnection.m */,
 			);
@@ -376,6 +401,15 @@
 				7CB788D81916FEC700F5074A /* NKSingletonData.m */,
 			);
 			path = NKSingletonData;
+			sourceTree = "<group>";
+		};
+		7CD1AAE7194546D8005B8FEF /* CLLocation */ = {
+			isa = PBXGroup;
+			children = (
+				7CD1AAE8194546E9005B8FEF /* CLLocation+Util.h */,
+				7CD1AAE9194546E9005B8FEF /* CLLocation+Util.m */,
+			);
+			path = CLLocation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -475,7 +509,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C090E7A1956EC2600D70960 /* NKURLConnectionOperation.m in Sources */,
 				7CAFDB71191652F100BCDC9F /* ViewController.m in Sources */,
+				7C3A4DDD1957D7D800010245 /* NKURLRequest.m in Sources */,
 				7CAFDB6B191652F100BCDC9F /* AppDelegate.m in Sources */,
 				7C1FBEF7191B788300E6462A /* NKImageMetaData.m in Sources */,
 				7C1FBEEC191B753000E6462A /* NSString+Network.m in Sources */,
@@ -486,10 +522,10 @@
 				7CB788CF1916F9D000F5074A /* NSString+Util.m in Sources */,
 				7C1FBEF2191B766E00E6462A /* AVAudioSession+Util.m in Sources */,
 				7CB6D51B1916B65B00B5E831 /* UIApplication+Util.m in Sources */,
-				7CB46D3C1917EF3800B32D99 /* NKHTTPURLRequest.m in Sources */,
 				7CAFDB67191652F100BCDC9F /* main.m in Sources */,
+				7C3A4DE11957D8AD00010245 /* NKURLRequest+Util.m in Sources */,
+				7CD1AAEA194546E9005B8FEF /* CLLocation+Util.m in Sources */,
 				7CB6D5211916C1B400B5E831 /* NKURLConnection.m in Sources */,
-				7CB46D3F1917EF4200B32D99 /* NKHTTPURLConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

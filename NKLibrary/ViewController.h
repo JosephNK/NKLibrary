@@ -13,4 +13,6 @@
 @property (nonatomic, strong) IBOutlet UILabel *label;
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 
+- (IBAction)btnClicked:(id)sender;
+
 @end

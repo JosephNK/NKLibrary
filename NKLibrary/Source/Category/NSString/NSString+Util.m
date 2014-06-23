@@ -6,7 +6,6 @@
 //  Copyright (c) 2014년 JosephNK. All rights reserved.
 //
 
-#import <CoreLocation/CoreLocation.h>
 #import "NSString+Util.h"
 #import "NKMacro.h"
 
@@ -32,69 +31,6 @@
     NSString *bundleSeedID = [[components objectEnumerator] nextObject];
     CFRelease(result);
     return bundleSeedID;
-}
-
-#pragma mark -
-
-+ (float)calcCLLocationDistanceWithSourceLat:(float)ulat SourceLong:(float)ulong
-                              DestinationLat:(float)tlat DestinationLong:(float)tlong {
-	
-	CLLocation *SourceLocation = [[CLLocation alloc] initWithLatitude:ulat longitude:ulong];
-	CLLocation *DestinationLocation = [[CLLocation alloc] initWithLatitude:tlat longitude:tlong];
-
-    CLLocationDistance distance = [SourceLocation distanceFromLocation:DestinationLocation];
-	
-    NK_RELEASE(SourceLocation);
-    NK_RELEASE(DestinationLocation);
-	
-	float fDistance = (float)distance;  // The distance from the Source
-	
-	return fDistance;
-}
-
-+ (float)calcMathDistanceWithSourceLat:(float)ulat SourceLong:(float)ulong
-                           DestinationLat:(float)tlat DestinationLong:(float)tlong {
-    
-    /*
-     URL : http://www.movable-type.co.uk/scripts/latlong.html
-     
-     Haversine formula:
-     a = sin²(Δlat/2) + cos(lat1).cos(lat2).sin²(Δlong/2)
-     c = 2.atan2(√a, √(1−a))
-     d = R.c
-     
-     where R is earth’s radius (mean radius = 6,371km);
-     note that angles need to be in radians to pass to trig functions!
-     
-     JavaScript:
-     var R = 6371; // km
-     var dLat = (lat2-lat1).toRad();
-     var dLon = (lon2-lon1).toRad();
-     var lat1 = lat1.toRad();
-     var lat2 = lat2.toRad();
-     
-     var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-     Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2);
-     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-     var d = R * c;
-     
-     */
-    
-    int R = 6371;   // mean radius = 6,371km
-    
-    double dLat = ((tlat) - (ulat)) * M_PI / 180;
-    double dLong = ((tlong) - (ulong)) * M_PI / 180;
-    double lat1 = (ulat) * M_PI / 180;
-    double lat2 = (tlat) * M_PI / 180;
-    
-    double a = sin(dLat/2) * sin(dLat/2) +
-    sin(dLong/2) * sin(dLong/2) * cos(lat1) * cos(lat2);
-    double c = 2 * atan2(sqrt(a), sqrt(1-a));
-    double d = R * c;
-    
-    float fDistance = (float)d; // The distance from the Source
-	
-	return fDistance;
 }
 
 #pragma mark -
