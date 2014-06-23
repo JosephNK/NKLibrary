@@ -76,9 +76,11 @@
 - (NSDictionary *)getMetaDataWithFilePath:(NSString *)path withMetaDataType:(NKImageMetaDataType)metaType {
     CFURLRef refUrl = NK_BRIDGE_CAST(CFURLRef, [NSURL fileURLWithPath:path]);
     CGImageSourceRef imageSource = CGImageSourceCreateWithURL(refUrl, NULL);
-    NSDictionary *metadata = NK_BRIDGE_CAST(NSDictionary *, CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL));
+    
+    NSDictionary *metadata = CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL));
     NSMutableDictionary *getMetadata = [NSMutableDictionary dictionaryWithDictionary:metadata];
     
+    //NK_AUTORELEASE(metadata);
     CFRelease(imageSource);
     
     switch (metaType) {
@@ -98,9 +100,11 @@
 - (NSDictionary *)getMetaDataWithData:(NSData *)data withMetaDataType:(NKImageMetaDataType)metaType {
     CFDataRef refData = NK_BRIDGE_CAST(CFDataRef, data);
     CGImageSourceRef imageSource = CGImageSourceCreateWithData(refData, NULL);
-    NSDictionary *metadata = NK_BRIDGE_CAST(NSDictionary *, CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL));
+    
+    NSDictionary *metadata = CFBridgingRelease(CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL));
     NSMutableDictionary *getMetadata = [NSMutableDictionary dictionaryWithDictionary:metadata];
     
+    //NK_AUTORELEASE(metadata);
     CFRelease(imageSource);
     
     switch (metaType) {
@@ -124,14 +128,14 @@
     NSMutableDictionary *metaData = [[self getMetaDataWithFilePath:path withMetaDataType:NKImageMetaDataTypeEXIF] mutableCopy];
     [metaData setEXIFUserComment:comment];
     
-    return metaData;
+    return NK_AUTORELEASE(metaData);
 }
 
 - (NSDictionary *)setUserComment:(NSString *)comment withData:(NSData *)data {
     NSMutableDictionary *metaData = [[self getMetaDataWithData:data withMetaDataType:NKImageMetaDataTypeEXIF] mutableCopy];
     [metaData setEXIFUserComment:comment];
     
-    return metaData;
+    return NK_AUTORELEASE(metaData);
 }
 
 #pragma mark -
@@ -178,8 +182,8 @@
         CFRelease(data);
     if (imageSource)
         CFRelease(imageSource);
-    if (UTI)
-        CFRelease(UTI);
+    //if (UTI)
+    //    CFRelease(UTI);
     if (imageDestination)
         CFRelease(imageDestination);
 }
@@ -222,8 +226,8 @@
         CFRelease(data);
     if (imageSource)
         CFRelease(imageSource);
-    if (UTI)
-        CFRelease(UTI);
+    //if (UTI)
+    //    CFRelease(UTI);
     if (imageDestination)
         CFRelease(imageDestination);
 }
@@ -246,9 +250,9 @@
         return nil;
     }
     
-    CGImageSourceRef myImageSource;
+    CGImageSourceRef myImageSource = CGImageSourceCreateWithURL(url, NULL);
     
-    myImageSource = CGImageSourceCreateWithURL(url, NULL);
+    CFRelease(url);
     
     CFDictionaryRef imagePropertiesDictionary;
     
