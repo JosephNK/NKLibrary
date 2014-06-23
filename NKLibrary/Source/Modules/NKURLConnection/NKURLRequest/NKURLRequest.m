@@ -13,15 +13,27 @@
 @implementation NKURLRequest
 
 #pragma mark -
+#pragma mark Dealloc
 
 - (void)dealloc
 {
     LLog(@"<dealloc> NKURLRequest");
-    NK_RELEASE(_URLString); _URLString = nil;
+    [self tearDown];
     NK_SUPER_DEALLOC();
 }
 
+- (void)tearDown
+{
+    if (_URLString) {
+        NK_RELEASE(_URLString); _URLString = nil;
+    }
+    if (_HTTPMethod) {
+        NK_RELEASE(_HTTPMethod); _HTTPMethod = nil;
+    }
+}
+
 #pragma mark -
+#pragma mark Init
 
 + (instancetype)manager {
     return NK_AUTORELEASE([[self alloc] init]);
@@ -29,23 +41,17 @@
 
 - (instancetype)init {
     if ((self = [super init])) {
-        [self defaultSetup];
+        _HTTPMethod = @"GET";
+        _stringEncoding = NSUTF8StringEncoding;
+        _allowsCellularAccess = YES;
+        _cachePolicy = NSURLRequestUseProtocolCachePolicy;
+        _HTTPShouldHandleCookies = YES;
+        _HTTPShouldUsePipelining = NO;
+        _networkServiceType = NSURLNetworkServiceTypeDefault;
+        _timeoutInterval = 60;
     }
     
     return self;
-}
-
-#pragma mark -
-
-- (void)defaultSetup {
-    _HTTPMethod = @"GET";
-    _stringEncoding = NSUTF8StringEncoding;
-    _allowsCellularAccess = YES;
-    _cachePolicy = NSURLRequestUseProtocolCachePolicy;
-    _HTTPShouldHandleCookies = YES;
-    _HTTPShouldUsePipelining = NO;
-    _networkServiceType = NSURLNetworkServiceTypeDefault;
-    _timeoutInterval = 60;
 }
 
 #pragma mark -
@@ -63,46 +69,102 @@
     mutableRequest.networkServiceType = _networkServiceType;
     mutableRequest.timeoutInterval = _timeoutInterval;
     
+    [mutableRequest setValue:[NKURLRequest modifyAcceptLanguage] forHTTPHeaderField:@"Accept-Language"];
+    [mutableRequest setValue:[NKURLRequest modifyUserAgent] forHTTPHeaderField:@"User-Agent"];
+    
     return NK_AUTORELEASE(mutableRequest);
+}
+
+@end
+
+
+/**
+    NKURLRequestHTTP
+ */
+
+@implementation NKURLRequestHTTP
+
+#pragma mark -
+#pragma mark Dealloc
+
+- (void)dealloc
+{
+    LLog(@"<dealloc> NKURLRequestHTTP");
+    [self tearDown];
+    NK_SUPER_DEALLOC();
+}
+
+- (void)tearDown
+{
+    
+}
+
+#pragma mark -
+#pragma mark Init
+
++ (instancetype)manager {
+    return NK_AUTORELEASE([[self alloc] init]);
 }
 
 #pragma mark -
 
 - (NSMutableURLRequest *)requestCreateByURL:(NSString *)URLString HTTPMethod:(NSString *)HTTPMethod Parameters:(id)parameters
 {
-    self.URLString = URLString;
-    self.HTTPMethod = HTTPMethod;
-    self.parameters = parameters;
+//    self.URLString = URLString;
+//    self.HTTPMethod = HTTPMethod;
+//    self.parameters = parameters;
     
     NSMutableURLRequest *mutableRequest = [[self requestCreateBaseByURL:URLString] mutableCopy];
     
     [mutableRequest setValue:[NKURLRequest modifyContentType:@"HTTP"
                                                     encoding:self.stringEncoding] forHTTPHeaderField:@"Content-Type"];
-    [mutableRequest setValue:[NKURLRequest modifyAcceptLanguage] forHTTPHeaderField:@"Accept-Language"];
-    [mutableRequest setValue:[NKURLRequest modifyUserAgent] forHTTPHeaderField:@"User-Agent"];
     
-    NSString *query = [NKURLRequest modifyParameters:parameters encoding:self.stringEncoding];
-    NSMutableURLRequest *__mutableRequest = [[self modifyByRequest:mutableRequest HTTPMethod:HTTPMethod Parameters:query] mutableCopy];
+    NSMutableURLRequest *__mutableRequest = [[self modifyByRequest:mutableRequest
+                                                        HTTPMethod:HTTPMethod
+                                                        Parameters:parameters] mutableCopy];
     
     NK_AUTORELEASE(mutableRequest);
     
 	return NK_AUTORELEASE(__mutableRequest);
 }
 
-- (NSMutableURLRequest *)modifyByRequest:(NSURLRequest *)request HTTPMethod:(NSString *)methodType Parameters:(NSString *)parameters
+- (NSMutableURLRequest *)modifyByRequest:(NSURLRequest *)request HTTPMethod:(NSString *)methodType Parameters:(id)parameters
 {
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
     
     NSString *HTTPMethodType = [methodType uppercaseString];
     
+    NSString *query = nil;
+    
     if (parameters) {
+        if ([parameters isKindOfClass:[NSString class]]) {
+            query = parameters;
+        }
+        
+        if ([parameters isKindOfClass:[NSDictionary class]]) {
+            NSMutableArray *mutableKeyValues = [NSMutableArray array];
+            for (NSString *key in [parameters allKeys]) {
+                NSString *value = [parameters valueForKey:key];
+                [mutableKeyValues addObject:[NSString stringWithFormat:@"%@=%@",
+                                             [NKURLRequest URLEncodeWithUnEncodedString:key withEncoding:self.stringEncoding],
+                                             [NKURLRequest URLEncodeWithUnEncodedString:value withEncoding:self.stringEncoding]]];
+            }
+            query = [mutableKeyValues componentsJoinedByString:@"&"];
+        }
+        
+        if ([parameters isKindOfClass:[NSArray class]]) {
+            
+        }
+    }
+    
+    if (query) {
         if ([HTTPMethodType isEqualToString:@"GET"]) {
-            NSString *urlString = [[mutableRequest.URL absoluteString] stringByAppendingFormat:mutableRequest.URL.query ? @"&%@" : @"?%@", parameters];
+            NSString *urlString = [[mutableRequest.URL absoluteString] stringByAppendingFormat:mutableRequest.URL.query ? @"&%@" : @"?%@", query];
             [mutableRequest setURL:[NSURL URLWithString:urlString]];
         }
         
         if ([HTTPMethodType isEqualToString:@"POST"]) {
-            [mutableRequest setHTTPBody:[parameters dataUsingEncoding: _stringEncoding]];
+            [mutableRequest setHTTPBody:[query dataUsingEncoding:self.stringEncoding]];
         }
     }
     
@@ -111,42 +173,58 @@
 
 @end
 
+
+/**
+    NKURLRequestJSON
+ */
+
 @implementation NKURLRequestJSON
 
 #pragma mark -
+#pragma mark Dealloc
 
 - (void)dealloc
 {
     LLog(@"<dealloc> NKURLRequestJSON");
+    [self tearDown];
     NK_SUPER_DEALLOC();
 }
 
+- (void)tearDown
+{
+    
+}
+
 #pragma mark -
+#pragma mark Init
 
 + (instancetype)manager {
     return NK_AUTORELEASE([[self alloc] init]);
 }
 
-- (NSMutableURLRequest *)requestCreateByURL:(NSString *)URLString HTTPMethod:(NSString *)HTTPMethod Parameters:(id)parameters {
-    self.URLString = URLString;
-    self.HTTPMethod = HTTPMethod;
-    self.parameters = parameters;
+#pragma mark -
+
+- (NSMutableURLRequest *)requestCreateByURL:(NSString *)URLString HTTPMethod:(NSString *)HTTPMethod Parameters:(id)parameters
+{
+//    self.URLString = URLString;
+//    self.HTTPMethod = HTTPMethod;
+//    self.parameters = parameters;
     
     NSMutableURLRequest *mutableRequest = [[self requestCreateBaseByURL:URLString] mutableCopy];
     
     [mutableRequest setValue:[NKURLRequest modifyContentType:@"JSON"
                                                     encoding:self.stringEncoding] forHTTPHeaderField:@"Content-Type"];
-    [mutableRequest setValue:[NKURLRequest modifyAcceptLanguage] forHTTPHeaderField:@"Accept-Language"];
-    [mutableRequest setValue:[NKURLRequest modifyUserAgent] forHTTPHeaderField:@"User-Agent"];
     
-    NSMutableURLRequest *__mutableRequest = [[self modifyByRequest:mutableRequest HTTPMethod:HTTPMethod Parameters:parameters] mutableCopy];
+    NSMutableURLRequest *__mutableRequest = [[self modifyByRequest:mutableRequest
+                                                        HTTPMethod:HTTPMethod
+                                                        Parameters:parameters] mutableCopy];
     
     NK_AUTORELEASE(mutableRequest);
     
 	return NK_AUTORELEASE(__mutableRequest);
 }
 
-- (NSMutableURLRequest *)modifyByRequest:(NSURLRequest *)request HTTPMethod:(NSString *)methodType Parameters:(NSString *)parameters
+- (NSMutableURLRequest *)modifyByRequest:(NSURLRequest *)request HTTPMethod:(NSString *)methodType Parameters:(id)parameters
 {
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
     
@@ -163,41 +241,58 @@
 
 @end
 
+
+/**
+    NKURLRequestXML
+ */
+
 @implementation NKURLRequestXML
 
 #pragma mark -
+#pragma mark Dealloc
 
 - (void)dealloc
 {
     LLog(@"<dealloc> NKURLRequestXML");
+    [self tearDown];
     NK_SUPER_DEALLOC();
 }
 
+- (void)tearDown
+{
+    
+}
+
 #pragma mark -
+#pragma mark Init
 
 + (instancetype)manager {
     return NK_AUTORELEASE([[self alloc] init]);
 }
 
-- (NSMutableURLRequest *)requestCreateByURL:(NSString *)URLString HTTPMethod:(NSString *)HTTPMethod Parameters:(id)parameters {
-    self.URLString = URLString;
-    self.HTTPMethod = HTTPMethod;
-    self.parameters = parameters;
+#pragma mark -
+
+- (NSMutableURLRequest *)requestCreateByURL:(NSString *)URLString HTTPMethod:(NSString *)HTTPMethod Parameters:(id)parameters
+{
+//    self.URLString = URLString;
+//    self.HTTPMethod = HTTPMethod;
+//    self.parameters = parameters;
     
     NSMutableURLRequest *mutableRequest = [[self requestCreateBaseByURL:URLString] mutableCopy];
     
-    [mutableRequest setValue:[NKURLRequest modifyContentType:@"XML" encoding:self.stringEncoding] forHTTPHeaderField:@"Content-Type"];
-    [mutableRequest setValue:[NKURLRequest modifyAcceptLanguage] forHTTPHeaderField:@"Accept-Language"];
-    [mutableRequest setValue:[NKURLRequest modifyUserAgent] forHTTPHeaderField:@"User-Agent"];
+    [mutableRequest setValue:[NKURLRequest modifyContentType:@"XML"
+                                                    encoding:self.stringEncoding] forHTTPHeaderField:@"Content-Type"];
     
-    NSMutableURLRequest *__mutableRequest = [[self modifyByRequest:mutableRequest HTTPMethod:HTTPMethod Parameters:parameters] mutableCopy];
+    NSMutableURLRequest *__mutableRequest = [[self modifyByRequest:mutableRequest
+                                                        HTTPMethod:HTTPMethod
+                                                        Parameters:parameters] mutableCopy];
     
     NK_AUTORELEASE(mutableRequest);
     
 	return NK_AUTORELEASE(__mutableRequest);
 }
 
-- (NSMutableURLRequest *)modifyByRequest:(NSURLRequest *)request HTTPMethod:(NSString *)methodType Parameters:(NSString *)parameters
+- (NSMutableURLRequest *)modifyByRequest:(NSURLRequest *)request HTTPMethod:(NSString *)methodType Parameters:(id)parameters
 {
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
     

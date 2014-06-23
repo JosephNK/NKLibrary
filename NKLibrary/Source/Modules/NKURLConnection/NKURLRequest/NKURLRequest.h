@@ -60,9 +60,17 @@
 
 + (instancetype)manager;
 
+@end
+
+
+@interface NKURLRequestHTTP : NKURLRequest
+
++ (instancetype)manager;
+
 - (NSMutableURLRequest *)requestCreateByURL:(NSString *)URLString HTTPMethod:(NSString *)HTTPMethod Parameters:(id)parameters;
 
 @end
+
 
 @interface NKURLRequestJSON : NKURLRequest
 
@@ -71,6 +79,7 @@
 - (NSMutableURLRequest *)requestCreateByURL:(NSString *)URLString HTTPMethod:(NSString *)HTTPMethod Parameters:(id)parameters;
 
 @end
+
 
 @interface NKURLRequestXML : NKURLRequest
 

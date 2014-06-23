@@ -8,38 +8,15 @@
 
 #import "NKURLConnectionOperation.h"
 #import "NKMacro.h"
+#import "UIApplication+Util.h"
 
-@interface NKURLConnectionOperation()
-@property (nonatomic, strong) NSURLConnection *connection;
-@property (nonatomic, strong) NSMutableData *responseData;
-@property (nonatomic, readwrite, strong) NSError *error;
-@property (nonatomic, readwrite, assign) BOOL finished;
-@property (nonatomic, readwrite, assign) BOOL executing;
-@property (nonatomic, readwrite, assign) BOOL cancelled;
-@property (nonatomic, readwrite, strong) NSRecursiveLock *lock;
-@property (nonatomic, copy) NKOperationSuccessHandler successHandler;
-@property (nonatomic, copy) NKOperationErrorHandler errorHandler;
-@end
-
-@implementation NKURLConnectionOperation
-
-//+ (void)networkEntry:(id)__unused object {
-//    @autoreleasepool {
-//        [[NSThread currentThread] setName:@"NKURLConnectionOperation"];
-//        
-//        NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-//        [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
-//        [runLoop run];
-//        NSLog(@"exit worker thread");
-//    }
-//}
+@implementation NKNetworkThread
 
 + (void) __attribute__((noreturn)) networkEntry:(id)__unused object
 {
     do {
         @autoreleasepool
         {
-            //[[NSRunLoop currentRunLoop] run];
             NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
             [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
             [runLoop run];
@@ -59,7 +36,27 @@
     return _networkThread;
 }
 
+@end
+
+
+@interface NKURLConnectionOperation()
+
+@property (nonatomic, strong) NSURLConnection *connection;
+@property (nonatomic, strong) NSMutableData *responseData;
+@property (nonatomic, readwrite, strong) NSError *error;
+@property (nonatomic, readwrite, assign) BOOL finished;
+@property (nonatomic, readwrite, assign) BOOL executing;
+@property (nonatomic, readwrite, assign) BOOL cancelled;
+@property (nonatomic, readwrite, strong) NSRecursiveLock *lock;
+@property (nonatomic, copy) NKOperationSuccessHandler successHandler;
+@property (nonatomic, copy) NKOperationErrorHandler errorHandler;
+
+@end
+
+@implementation NKURLConnectionOperation
+
 #pragma mark -
+#pragma mark Dealloc
 
 - (void)dealloc
 {
@@ -91,9 +88,14 @@
 }
 
 #pragma mark -
+#pragma mark Init
 
 + (instancetype)manager {
     return NK_AUTORELEASE([[self alloc] init]);
+}
+
++ (instancetype)managerWithRequest:(NSURLRequest *)request {
+    return NK_AUTORELEASE([[self alloc] initWithRequest:request]);
 }
 
 - (instancetype)init
@@ -101,12 +103,9 @@
     self = [super init];
     if (self) {
         _lock = [[NSRecursiveLock alloc] init];
+        _enableNetworkIndicator = YES;
     }
     return self;
-}
-
-+ (instancetype)managerWithRequest:(NSURLRequest *)request {
-    return NK_AUTORELEASE([[self alloc] initWithRequest:request]);
 }
 
 - (instancetype)initWithRequest:(NSURLRequest *)request
@@ -114,12 +113,14 @@
     self = [super init];
     if (self) {
         _lock = [[NSRecursiveLock alloc] init];
+        _enableNetworkIndicator = YES;
         _request = [request copy];
     }
     return self;
 }
 
 #pragma mark -
+#pragma mark Request:success:faiure
 
 + (id)request:(NSURLRequest *)request
       success:(void (^)(NKURLConnectionOperation *operation, id responseData))success
@@ -133,7 +134,7 @@
     operation.successHandler = NK_BLOCK_COPY(success);
     operation.errorHandler = NK_BLOCK_COPY(failure);
     
-    [operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    //[operation setQueuePriority:NSOperationQueuePriorityVeryHigh];
 
     return operation;
 }
@@ -148,10 +149,13 @@
     _successHandler = NK_BLOCK_COPY(success);
     _errorHandler = NK_BLOCK_COPY(failure);
     
-    [self setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    //[self setQueuePriority:NSOperationQueuePriorityVeryHigh];
     
     return nil;
 }
+
+#pragma mark -
+#pragma mark setCompletionBlockWithSuccess:failure
 
 - (void)setCompletionBlockWithSuccess:(void (^)(NKURLConnectionOperation *operation, id responseData))success
                               failure:(void (^)(NKURLConnectionOperation *operation, NSError *error))failure
@@ -188,6 +192,7 @@
 }
 
 #pragma mark -
+#pragma mark NSOperation Overriding
 
 - (BOOL)isConcurrent {
     return YES;
@@ -219,13 +224,13 @@
         //[super cancel];
         if ([self isExecuting]) {
             [self performSelector:@selector(operationDidCancel)
-                         onThread:[[self class] networkThread]
+                         onThread:[[NKNetworkThread class] networkThread]
                        withObject:nil
                     waitUntilDone:NO
                             modes:[[NSSet setWithObject:NSRunLoopCommonModes] allObjects]];
         }else {
             [self performSelector:@selector(operationDidCancel)
-                         onThread:[[self class] networkThread]
+                         onThread:[[NKNetworkThread class] networkThread]
                        withObject:nil
                     waitUntilDone:NO
                             modes:[[NSSet setWithObject:NSRunLoopCommonModes] allObjects]];
@@ -243,7 +248,7 @@
     
     if ([self isCancelled]) {        
         [self performSelector:@selector(operationDidCancel)
-                     onThread:[[self class] networkThread]
+                     onThread:[[NKNetworkThread class] networkThread]
                    withObject:nil
                 waitUntilDone:NO
                         modes:[[NSSet setWithObject:NSRunLoopCommonModes] allObjects]];
@@ -257,7 +262,7 @@
         [self didChangeValueForKey:@"isFinished"];
         
         [self performSelector:@selector(operationDidStart)
-                     onThread:[[self class] networkThread]
+                     onThread:[[NKNetworkThread class] networkThread]
                    withObject:nil
                 waitUntilDone:NO
                         modes:[[NSSet setWithObject:NSRunLoopCommonModes] allObjects]];
@@ -267,8 +272,10 @@
 }
 
 #pragma mark -
+#pragma mark operationDidMethord
 
-- (void)operationDidCancel {
+- (void)operationDidCancel
+{
     NSLog(@"operationDidCancel in main thread?: %@", [NSThread isMainThread] ? @"YES" : @"NO");
     
     [self.lock lock];
@@ -295,10 +302,15 @@
     [self.lock unlock];
 }
 
-- (void)operationDidStart {
+- (void)operationDidStart
+{
     NSLog(@"operationDidStart in main thread?: %@", [NSThread isMainThread] ? @"YES" : @"NO");
     
     [self.lock lock];
+    
+    if (_enableNetworkIndicator) {
+        [UIApplication showNetworkActivityIndicator];
+    }
     
     _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
     [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
@@ -313,6 +325,10 @@
     
     [self.lock lock];
     
+    if (_enableNetworkIndicator) {
+        [UIApplication hideNetworkActivityIndicator];
+    }
+    
     [self willChangeValueForKey:@"isFinished"];
     [self willChangeValueForKey:@"isExecuting"];
     self.executing = NO;
@@ -324,8 +340,10 @@
 }
 
 #pragma mark -
+#pragma mark CallBack Main Thread
 
-- (void)callBackMainThreadSuccess {
+- (void)callBackMainThreadSuccess
+{
     if (_successHandler) {
         dispatch_async(dispatch_get_main_queue(), ^{
             _successHandler(self, self.responseData);
@@ -333,7 +351,8 @@
     }
 }
 
-- (void)callBackMainThreadError {
+- (void)callBackMainThreadError
+{
     if (_errorHandler) {
         dispatch_async(dispatch_get_main_queue(), ^{
             _errorHandler(self, self.error);

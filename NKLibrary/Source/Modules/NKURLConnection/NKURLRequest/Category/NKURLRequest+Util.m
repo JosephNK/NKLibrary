@@ -36,6 +36,22 @@ static NSString * const kCharactersLeaveUnescapedInQueryString = @"[].";
 
 #pragma mark -
 
++ (NSString *)modifyContentType:(NSString *)type encoding:(NSStringEncoding)stringEncoding
+{
+    if ([type isEqualToString:@"HTTP"]) {
+        NSString *charset = NK_BRIDGE_CAST(NSString *, CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(stringEncoding)));
+        return [NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset];
+    }else if ([type isEqualToString:@"JSON"]) {
+        NSString *charset = NK_BRIDGE_CAST(NSString *, CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(stringEncoding)));
+        return [NSString stringWithFormat:@"application/json; charset=%@", charset];
+    }else if ([type isEqualToString:@"XML"]) {
+        NSString *charset = NK_BRIDGE_CAST(NSString *, CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(stringEncoding)));
+        return [NSString stringWithFormat:@"application/x-plist; charset=%@", charset];
+    }
+    
+    return nil;
+}
+
 + (NSString *)modifyAcceptLanguage
 {
     // Accept-Language HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4
@@ -66,50 +82,6 @@ static NSString * const kCharactersLeaveUnescapedInQueryString = @"[].";
     }
     
     return userAgent;
-}
-
-+ (NSString *)modifyContentType:(NSString *)type encoding:(NSStringEncoding)stringEncoding
-{
-    if ([type isEqualToString:@"HTTP"]) {
-        NSString *charset = NK_BRIDGE_CAST(NSString *, CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(stringEncoding)));
-        return [NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", charset];
-    }else if ([type isEqualToString:@"JSON"]) {
-        NSString *charset = NK_BRIDGE_CAST(NSString *, CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(stringEncoding)));
-        return [NSString stringWithFormat:@"application/json; charset=%@", charset];
-    }else if ([type isEqualToString:@"XML"]) {
-        NSString *charset = NK_BRIDGE_CAST(NSString *, CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(stringEncoding)));
-        return [NSString stringWithFormat:@"application/x-plist; charset=%@", charset];
-    }
-    
-    return nil;
-}
-
-+ (NSString *)modifyParameters:(id)parameters encoding:(NSStringEncoding)stringEncoding
-{
-    NSString *query = nil;
-    
-    if (parameters) {
-        if ([parameters isKindOfClass:[NSString class]]) {
-            query = parameters;
-        }
-        
-        if ([parameters isKindOfClass:[NSDictionary class]]) {
-            NSMutableArray *mutableKeyValues = [NSMutableArray array];
-            for (NSString *key in [parameters allKeys]) {
-                NSString *value = [parameters valueForKey:key];
-                [mutableKeyValues addObject:[NSString stringWithFormat:@"%@=%@",
-                                             [self URLEncodeWithUnEncodedString:key withEncoding:stringEncoding],
-                                             [self URLEncodeWithUnEncodedString:value withEncoding:stringEncoding]]];
-            }
-            query = [mutableKeyValues componentsJoinedByString:@"&"];
-        }
-        
-        if ([parameters isKindOfClass:[NSArray class]]) {
-            
-        }
-    }
-    
-    return query;
 }
 
 @end

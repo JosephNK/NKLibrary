@@ -11,9 +11,9 @@
 @interface NKURLRequest (Util)
 
 + (NSString *)URLEncodeWithUnEncodedString:(NSString *)unencodedString withEncoding:(NSStringEncoding)stringEncoding;
+
++ (NSString *)modifyContentType:(NSString *)type encoding:(NSStringEncoding)stringEncoding;
 + (NSString *)modifyAcceptLanguage;
 + (NSString *)modifyUserAgent;
-+ (NSString *)modifyContentType:(NSString *)type encoding:(NSStringEncoding)stringEncoding;
-+ (NSString *)modifyParameters:(id)parameters encoding:(NSStringEncoding)stringEncoding;
 
 @end

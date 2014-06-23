@@ -34,10 +34,15 @@
                                     <action selector="btnClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ZOQ-bI-GGA"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pIB-m6-Opd">
+                                <rect key="frame" x="40" y="142" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="pIB-m6-Opd" id="vjc-gu-ZnD"/>
                         <outlet property="label" destination="3hT-6b-Gch" id="8Px-9A-wfv"/>
                     </connections>
                 </viewController>

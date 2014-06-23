@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@interface NKNetworkThread : NSObject
+
++ (void) __attribute__((noreturn)) networkEntry:(id)__unused object;
++ (NSThread *)networkThread;
+
+@end
+
+
 @class NKURLConnectionOperation;
 
 typedef void (^NKOperationSuccessHandler)(NKURLConnectionOperation *operation, id responseData);

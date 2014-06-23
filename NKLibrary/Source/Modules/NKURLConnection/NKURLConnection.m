@@ -19,23 +19,23 @@
 - (void)dealloc
 {
     LLog(@"<dealloc> NKURLConnection");
+    [self tearDown];
     NK_SUPER_DEALLOC();
+}
+
+- (void)tearDown
+{
+
 }
 
 #pragma mark -
 
 + (instancetype)manager {
     return NK_AUTORELEASE([[self alloc] init]);
-    //return [[self alloc] init];
 }
 
 - (instancetype)init {
     if ((self = [super init])) {
-//        self.requestHttp = [NKHTTPURLRequest manager];
-//        self.requestJson = [NKJSONURLRequest manager];
-//        self.requestXml = [NKXMLURLRequest manager];
-//        self.connection = [NKHTTPURLConnection manager];
-        
         _operationQueue = NK_AUTORELEASE([[NSOperationQueue alloc] init]);
         [_operationQueue setMaxConcurrentOperationCount:1];
     }
@@ -44,6 +44,7 @@
 }
 
 #pragma mark -
+#pragma mark Request HTTP
 
 - (void)requestHttpURL:(NSString *)urlString
                 method:(NSString *)method
@@ -51,17 +52,20 @@
                success:(NKOperationSuccessHandler)successHandler
                  error:(NKOperationErrorHandler)errorHandler
 {
-    NSURLRequest *request = [[NKURLRequest manager] requestCreateByURL:urlString
-                                                            HTTPMethod:method
-                                                            Parameters:parameters];
+    NSURLRequest *request = [[NKURLRequestHTTP manager] requestCreateByURL:urlString
+                                                                HTTPMethod:method
+                                                                Parameters:parameters];
     
-    [self logRequest:request];
+    //[self logRequest:request];
     
     NKURLConnectionOperation *operation = [NKURLConnectionOperation managerWithRequest:request];
     [operation success:successHandler failure:errorHandler];
     
     [self.operationQueue addOperation:operation];
 }
+
+#pragma mark -
+#pragma mark Request JSON
 
 - (void)requestJsonURL:(NSString *)urlString
                 method:(NSString *)method
@@ -73,13 +77,16 @@
                                                                 HTTPMethod:method
                                                                 Parameters:parameters];
     
-    [self logRequest:request];
+    //[self logRequest:request];
     
     NKURLConnectionOperation *operation = [NKURLConnectionOperation managerWithRequest:request];
     [operation success:successHandler failure:errorHandler];
     
     [self.operationQueue addOperation:operation];
 }
+
+#pragma mark -
+#pragma mark Request XML
 
 - (void)requestXMLURL:(NSString *)urlString
                method:(NSString *)method
@@ -88,10 +95,10 @@
                 error:(NKOperationErrorHandler)errorHandler
 {
     NSURLRequest *request = [[NKURLRequestXML manager] requestCreateByURL:urlString
-                                                                HTTPMethod:method
-                                                                Parameters:parameters];
+                                                               HTTPMethod:method
+                                                               Parameters:parameters];
     
-    [self logRequest:request];
+    //[self logRequest:request];
     
     NKURLConnectionOperation *operation = [NKURLConnectionOperation managerWithRequest:request];
     [operation success:successHandler failure:errorHandler];

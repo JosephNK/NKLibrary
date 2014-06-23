@@ -111,39 +111,42 @@
     }
 */
     {
-        NSString *URLString = @"http://farm7.staticflickr.com/6191/6075294191_4c8ca20409.jpg";
+        
         NKURLConnection *connection = [NKURLConnection manager];
-        [connection requestHttpURL:URLString method:@"POST" parameters:nil
-                           success:^(NKURLConnectionOperation *operation, id responseData) {
-                               NSLog(@"success in main thread?: %@", [NSThread isMainThread] ? @"YES" : @"NO");
-                               if (responseData) {
-                                   NSLog(@"[1] get data size: %d", [(NSData *)responseData length]);
-                               }
-                           } error:^(NKURLConnectionOperation *operation, NSError *error) {
-                               NSLog(@"failure in main thread?: %@", [NSThread isMainThread] ? @"YES" : @"NO");
-                               if (error) {
-                                   NSLog(@"error : %@", [error description]);
-                               }
-                           }];
-        NSString *URLString1 = @"https://httpbin.org/delay/1";
-        [connection requestHttpURL:URLString1 method:@"POST" parameters:nil
-                           success:^(NKURLConnectionOperation *operation, id responseData) {
-                               NSLog(@"success in main thread?: %@", [NSThread isMainThread] ? @"YES" : @"NO");
-                               if (responseData) {
-                                   NSLog(@"[2] get data size: %d", [(NSData *)responseData length]);
-                               }
-                           } error:^(NKURLConnectionOperation *operation, NSError *error) {
-                               NSLog(@"failure in main thread?: %@", [NSThread isMainThread] ? @"YES" : @"NO");
-                               if (error) {
-                                   NSLog(@"error : %@", [error description]);
-                               }
-                           }];
+        
+//        NSString *URLString = @"http://farm7.staticflickr.com/6191/6075294191_4c8ca20409.jpg";
+//        [connection requestHttpURL:URLString method:@"POST" parameters:nil
+//                           success:^(NKURLConnectionOperation *operation, id responseData) {
+//                               NSLog(@"success in main thread?: %@", [NSThread isMainThread] ? @"YES" : @"NO");
+//                               if (responseData) {
+//                                   NSLog(@"[1] get data size: %d", [(NSData *)responseData length]);
+//                               }
+//                           } error:^(NKURLConnectionOperation *operation, NSError *error) {
+//                               NSLog(@"failure in main thread?: %@", [NSThread isMainThread] ? @"YES" : @"NO");
+//                               if (error) {
+//                                   NSLog(@"error : %@", [error description]);
+//                               }
+//                           }];
+//        NSString *URLString1 = @"https://httpbin.org/delay/1";
+//        [connection requestHttpURL:URLString1 method:@"POST" parameters:nil
+//                           success:^(NKURLConnectionOperation *operation, id responseData) {
+//                               NSLog(@"success in main thread?: %@", [NSThread isMainThread] ? @"YES" : @"NO");
+//                               if (responseData) {
+//                                   NSLog(@"[2] get data size: %d", [(NSData *)responseData length]);
+//                               }
+//                           } error:^(NKURLConnectionOperation *operation, NSError *error) {
+//                               NSLog(@"failure in main thread?: %@", [NSThread isMainThread] ? @"YES" : @"NO");
+//                               if (error) {
+//                                   NSLog(@"error : %@", [error description]);
+//                               }
+//                           }];
         NSString *URLString2 = @"http://www.wowlolfunny.com/wp-content/uploads/2014/05/wow-wallpaper-1.jpg";
         [connection requestHttpURL:URLString2 method:@"POST" parameters:nil
                            success:^(NKURLConnectionOperation *operation, id responseData) {
                                NSLog(@"success in main thread?: %@", [NSThread isMainThread] ? @"YES" : @"NO");
                                if (responseData) {
                                    NSLog(@"[3] get data size: %d", [(NSData *)responseData length]);
+                                   self.imageView.image = [UIImage imageWithData:responseData];
                                }
                            } error:^(NKURLConnectionOperation *operation, NSError *error) {
                                NSLog(@"failure in main thread?: %@", [NSThread isMainThread] ? @"YES" : @"NO");
@@ -151,19 +154,20 @@
                                    NSLog(@"error : %@", [error description]);
                                }
                            }];
-        NSString *URLString3 = @"https://httpbin.org/delay/5";
-        [connection requestHttpURL:URLString3 method:@"POST" parameters:nil
-                           success:^(NKURLConnectionOperation *operation, id responseData) {
-                               NSLog(@"success in main thread?: %@", [NSThread isMainThread] ? @"YES" : @"NO");
-                               if (responseData) {
-                                   NSLog(@"[4] get data size: %d", [(NSData *)responseData length]);
-                               }
-                           } error:^(NKURLConnectionOperation *operation, NSError *error) {
-                               NSLog(@"failure in main thread?: %@", [NSThread isMainThread] ? @"YES" : @"NO");
-                               if (error) {
-                                   NSLog(@"error : %@", [error description]);
-                               }
-                           }];
+//        NSString *URLString3 = @"https://posttestserver.com/post.php";
+//        NSDictionary *parameters3 = @{@"key":@"value"};
+//        [connection requestHttpURL:URLString3 method:@"POST" parameters:parameters3
+//                           success:^(NKURLConnectionOperation *operation, id responseData) {
+//                               NSLog(@"success in main thread?: %@", [NSThread isMainThread] ? @"YES" : @"NO");
+//                               if (responseData) {
+//                                   NSLog(@"[4] get data size: %d", [(NSData *)responseData length]);
+//                               }
+//                           } error:^(NKURLConnectionOperation *operation, NSError *error) {
+//                               NSLog(@"failure in main thread?: %@", [NSThread isMainThread] ? @"YES" : @"NO");
+//                               if (error) {
+//                                   NSLog(@"error : %@", [error description]);
+//                               }
+//                           }];
     }
     
 }
